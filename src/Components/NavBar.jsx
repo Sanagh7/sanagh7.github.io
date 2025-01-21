@@ -12,8 +12,14 @@ const NavBar = () => {
       <div className="m-8 flex items-center justify-center gap-4 text-2xl">
         <FaLinkedin />
         <FaGithub />
-        <FaInstagram />
         <FaXTwitter />
+        <a
+          href="https://www.instagram.com/sanandan_ghimire_7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaInstagram />
+        </a>
       </div>
     </nav>
   );
