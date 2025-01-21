@@ -6,7 +6,7 @@ git commit -m "samosa"
 
 git pull origin main
 
-start cmd /k "npm run build"
+cmd /k "npm run build"
 
 git add .
 
