@@ -1,11 +1,10 @@
-
 git add .
 
 git commit -m "samosa"
 
 git pull origin main
 
-cmd /k "npm run build"
+call npm run build
 
 git add .
 
