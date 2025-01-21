@@ -1,13 +1,15 @@
 @echo off
 
-@REM git add .
+git add .
 
-@REM git commit -m "lalal"
+git commit -m "samosa"
 
-@REM git pull origin main
+git pull origin main
 
-@REM npm run build &&
+start cmd /k "npm run build"
 
+git add .
 
+git commit -m "aloo"
 
-git add . &&  git commit -m "lalal"  &&  git push origin main
+git push origin main
