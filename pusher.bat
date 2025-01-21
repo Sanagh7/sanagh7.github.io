@@ -6,10 +6,7 @@ git commit -m "lalal"
 
 git pull origin main
 
-npm run build 
+npm run build && git add . &&  git commit -m "lalal"  &&  git push origin main
 
-git add .
 
-git commit -m "lalal"
 
-git push origin main
