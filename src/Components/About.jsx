@@ -1,15 +1,27 @@
-// src/components/About.js
-import React from "react";
-import Projects from "./Projects";
+import aboutImg from "../assets/san.jpg";
+import { ABOUT_TEXT } from "../constants";
 
-function About() {
+const About = () => {
   return (
-    <section id="about">
-      <h2>About Me</h2>
-      <p> introduction, background, and skills.</p>
-      <Projects />
-    </section>
+    <div className="border-neutral-900 pb-4">
+      <h1 className="my-20 text-center text-4xl">
+        About
+        <span className="text-neutral-500"> Me</span>{" "}
+      </h1>
+      <div className="flex flex-wrap">
+        <div className="w-full lg:w-1/2  lg:p-8">
+          <div className="flex items-center justify-center">
+            <img className="rounded-2xl" src={aboutImg} alt="about" />
+          </div>
+        </div>
+        <div className="w-full lg:w-1/2">
+          <div className="flex justify-center lg:justify-start">
+            <p className="my-2 max-w-xl py-6">{ABOUT_TEXT}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default About;
