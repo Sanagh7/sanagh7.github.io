@@ -39,30 +39,50 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
+    title: "Website Penetration Testing System",
+    description:
+      "A comprehensive security tool that automates vulnerability scanning for websites, detecting OWASP Top 10 vulnerabilities, SQL injections, and XSS attacks with detailed reports and remediation suggestions.",
+    technologies: [
+      "Python",
+      "Django",
+      "Docker",
+      "OWASP ZAP",
+      "Selenium",
+      "PostgreSQL",
+      "React",
+      "JWT Authentication",
+      "Celery",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=250&fit=crop",
+    github: "https://github.com/sanandan-gh/pentest-platform",
+    demo: "https://pentest.sanandanghimire.com",
+  },
+  {
     title: "E-commerce Platform",
     description:
       "A full-stack e-commerce solution with real-time inventory management, payment processing, and user authentication.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe API", "AWS"],
+    technologies: ["React", "Node.js", "MongoDB", "Stripe API", "AWS"],
     image:
       "https://images.unsplash.com/photo-1557821552-17105176677c?w=400&h=250&fit=crop",
-    link: "https://github.com/sanandan-gh/ecommerce-platform",
+    github: "https://github.com/sanandan-gh/ecommerce-platform",
     demo: "https://ecommerce-demo.sanandanghimire.com",
   },
   {
     title: "Task Management System",
     description:
       "A collaborative project management tool with Kanban boards, task assignments, and progress tracking.",
-    tech: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "Docker"],
+    technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "Docker"],
     image:
       "https://images.unsplash.com/photo-1484480974693-6461ffad8d80?w=400&h=250&fit=crop",
-    link: "https://github.com/sanandan-gh/task-manager",
+    github: "https://github.com/sanandan-gh/task-manager",
     demo: "https://tasks.sanandanghimire.com",
   },
   {
     title: "Weather Forecast App",
     description:
       "A mobile-responsive weather application with location detection, 7-day forecasts, and weather alerts.",
-    tech: [
+    technologies: [
       "React",
       "Redux",
       "OpenWeather API",
@@ -71,7 +91,7 @@ export const PROJECTS = [
     ],
     image:
       "https://images.unsplash.com/photo-1532178910-7815d6919875?w=400&h=250&fit=crop",
-    link: "https://github.com/sanandan-gh/weather-app",
+    github: "https://github.com/sanandan-gh/weather-app",
     demo: "https://weather.sanandanghimire.com",
   },
 ];
@@ -107,31 +127,61 @@ export const SKILLS = [
   {
     category: "Frontend",
     technologies: [
-      { name: "React", level: 90, icon: "react" },
-      { name: "JavaScript", level: 95, icon: "javascript" },
-      { name: "TypeScript", level: 85, icon: "typescript" },
-      { name: "HTML/CSS", level: 90, icon: "html" },
-      { name: "Tailwind CSS", level: 85, icon: "tailwind" },
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "HTML/CSS",
+      "Tailwind CSS",
+      "Vue.js",
+      "Angular",
+      "Next.js",
+      "Redux",
+      "WebSockets",
     ],
   },
   {
     category: "Backend",
     technologies: [
-      { name: "Node.js", level: 90, icon: "node" },
-      { name: "Express", level: 85, icon: "express" },
-      { name: "MongoDB", level: 80, icon: "mongodb" },
-      { name: "PostgreSQL", level: 75, icon: "postgresql" },
-      { name: "GraphQL", level: 70, icon: "graphql" },
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "PostgreSQL",
+      "GraphQL",
+      "Django",
+      "Flask",
+      "REST APIs",
+      "Firebase",
+      "Microservices",
+    ],
+  },
+  {
+    category: "Cyber Security",
+    technologies: [
+      "Penetration Testing",
+      "Vulnerability Assessment",
+      "Network Security",
+      "OWASP Top 10",
+      "Ethical Hacking",
+      "Burp Suite",
+      "Wireshark",
+      "Metasploit",
+      "Secure Coding Practices",
+      "Security Auditing",
     ],
   },
   {
     category: "Tools & Deployment",
     technologies: [
-      { name: "Git", level: 90, icon: "git" },
-      { name: "Docker", level: 80, icon: "docker" },
-      { name: "AWS", level: 75, icon: "aws" },
-      { name: "CI/CD", level: 70, icon: "cicd" },
-      { name: "Jest", level: 80, icon: "jest" },
+      "Git",
+      "Docker",
+      "AWS",
+      "CI/CD",
+      "Jest",
+      "Kubernetes",
+      "Azure",
+      "Terraform",
+      "Jenkins",
+      "Linux",
     ],
   },
 ];
