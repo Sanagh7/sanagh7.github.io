@@ -14,7 +14,7 @@ export const CONTACT = {
 };
 
 export const ABOUT_TEXT =
-  "I'm a passionate full-stack developer with over 5 years of experience building modern web applications. My expertise includes React, Node.js, and cloud architecture. I focus on creating clean, efficient, and user-friendly solutions that solve real-world problems. My background in computer science combined with a keen eye for design allows me to bridge the gap between functionality and aesthetics. When I'm not coding, you'll find me hiking in the mountains or exploring new technologies.";
+  "I'm a passionate full-stack developer with over 3 years of experience building modern web applications. My expertise includes React, Node.js, and cloud architecture. I focus on creating clean, efficient, and user-friendly solutions that solve real-world problems. My background in computer science combined with a keen eye for design allows me to bridge the gap between functionality and aesthetics. When I'm not coding, you'll find me hiking in the mountains or exploring new technologies.";
 
 export const EDUCATION = [
   // {
