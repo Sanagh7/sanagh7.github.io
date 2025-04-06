@@ -53,3 +53,8 @@ export const TESTIMONIALS = [
     description: "Testimonial 1 description",
   },
 ];
+
+export const HERO_CONTENT = {
+  title: "Hero Title",
+  description: "Hero Description",
+};
