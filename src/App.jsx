@@ -7,6 +7,8 @@ import Navbar from "./Components/NavBar";
 import About from "./Components/About";
 import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
+import Testimonials from "./Components/Testimonials";
+import Footer from "./Components/Footer";
 
 import Home from "./Components/Home";
 import Hero from "./Hero";
@@ -15,18 +17,40 @@ import Technologies from "./Components/Technologies";
 function App() {
   return (
     <div className="overflow-x-hidden text-neutral-300 antialised selection:bg-cyan-300 selection:text-cyan-900">
+      {/* Background */}
       <div className="fixed top-0 -z-10 h-full w-full">
-        <div
-          className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-
-      [radial-gradial(ellipse_80%_80%_at_50%-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-        ></div>
+        <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#050816]"></div>
+        <div className="absolute inset-0 z-[-1] bg-[linear-gradient(to_right,#080325_1px,transparent_1px),linear-gradient(to_bottom,#080325_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+
+        {/* Animated gradient orbs */}
+        <div className="absolute left-[10%] top-[20%] z-[-1] h-96 w-96 animate-pulse rounded-full bg-cyan-950/30 blur-[120px]"></div>
+        <div className="absolute right-[15%] top-[40%] z-[-1] h-72 w-72 animate-pulse rounded-full bg-indigo-900/20 blur-[120px] delay-700"></div>
+        <div className="absolute bottom-[10%] left-[35%] z-[-1] h-80 w-80 animate-pulse rounded-full bg-purple-900/20 blur-[120px] delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-8">
-        <Navbar />
-        <Hero />
-        <About />
-        <Technologies />
+      <div className="mx-auto min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Navbar />
+          <section id="home">
+            <Hero />
+          </section>
+          <section id="about">
+            <About />
+          </section>
+          <section id="skills">
+            <Technologies />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          <section id="testimonials">
+            <Testimonials />
+          </section>
+          <section id="contact">
+            <Contact />
+          </section>
+        </div>
+        <Footer />
       </div>
     </div>
   );
