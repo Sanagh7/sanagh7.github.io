@@ -17,3 +17,10 @@ export const ABOUT_TEXT = {
   description:
     "I am a software engineer with a passion for building scalable and efficient systems. I have a strong foundation in computer science and software engineering principles. I am a quick learner and I am always looking for new challenges.",
 };
+
+export const PROJECTS = [
+  {
+    title: "Project 1",
+    description: "Project 1 description",
+  },
+];
