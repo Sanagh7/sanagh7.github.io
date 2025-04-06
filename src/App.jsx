@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/NavBar";
@@ -9,12 +9,39 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import Testimonials from "./Components/Testimonials";
 import Footer from "./Components/Footer";
+import Education from "./Components/Education";
 
 import Home from "./Components/Home";
-import Hero from "./Hero";
+import Hero from "./Components/Hero";
 import Technologies from "./Components/Technologies";
 
 function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Handle global cursor effect
+  useEffect(() => {
+    let timeoutId;
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setIsVisible(true);
+
+      // Hide cursor after 2 seconds of inactivity
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsVisible(false);
+      }, 2000);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <div className="overflow-x-hidden text-neutral-300 antialised selection:bg-cyan-300 selection:text-cyan-900">
       {/* Background */}
@@ -28,6 +55,18 @@ function App() {
         <div className="absolute bottom-[10%] left-[35%] z-[-1] h-80 w-80 animate-pulse rounded-full bg-purple-900/20 blur-[120px] delay-1000"></div>
       </div>
 
+      {/* Custom cursor glow effect */}
+      <div
+        className="pointer-events-none fixed z-50 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          opacity: isVisible ? 1 : 0,
+        }}
+      >
+        <div className="h-[300px] w-[300px] rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-transparent blur-3xl"></div>
+      </div>
+
       <div className="mx-auto min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Navbar />
@@ -36,6 +75,9 @@ function App() {
           </section>
           <section id="about">
             <About />
+          </section>
+          <section id="education">
+            <Education />
           </section>
           <section id="skills">
             <Technologies />

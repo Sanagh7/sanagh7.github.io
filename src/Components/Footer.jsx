@@ -131,7 +131,12 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="mr-2 mt-1 inline-block text-cyan-400">📞</span>
-                <span className="text-neutral-400">{CONTACT.phoneNo}</span>
+                <a
+                  href={`tel:${CONTACT.phone}`}
+                  className="text-neutral-400 transition-colors hover:text-cyan-400"
+                >
+                  {CONTACT.phone}
+                </a>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 mt-1 inline-block text-cyan-400">✉️</span>

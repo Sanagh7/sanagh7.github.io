@@ -209,7 +209,12 @@ function Contact() {
                       <p className="text-sm font-medium text-neutral-400">
                         Phone
                       </p>
-                      <p className="text-lg text-white">{CONTACT.phoneNo}</p>
+                      <a
+                        href={`tel:${CONTACT.phone}`}
+                        className="block text-lg text-white transition-colors hover:text-cyan-400"
+                      >
+                        {CONTACT.phone}
+                      </a>
                     </div>
                   </motion.div>
                 </div>
