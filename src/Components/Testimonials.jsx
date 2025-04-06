@@ -79,7 +79,9 @@ const Testimonials = () => {
             >
               <p className="mb-8 text-lg leading-relaxed text-neutral-300 sm:text-xl">
                 <span className="mr-1 text-2xl text-cyan-500">"</span>
-                {TESTIMONIALS[activeIndex].text}
+                {TESTIMONIALS[activeIndex]
+                  ? TESTIMONIALS[activeIndex].text
+                  : ""}
                 <span className="ml-1 text-2xl text-cyan-500">"</span>
               </p>
 
@@ -88,18 +90,18 @@ const Testimonials = () => {
                   <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 opacity-75 blur"></div>
                   <div className="relative h-16 w-16 overflow-hidden rounded-full">
                     <img
-                      src={TESTIMONIALS[activeIndex].image}
-                      alt={TESTIMONIALS[activeIndex].name}
+                      src={TESTIMONIALS[activeIndex]?.image}
+                      alt={TESTIMONIALS[activeIndex]?.name}
                       className="h-full w-full object-cover"
                     />
                   </div>
                 </div>
                 <div>
                   <h4 className="text-lg font-medium text-white">
-                    {TESTIMONIALS[activeIndex].name}
+                    {TESTIMONIALS[activeIndex]?.name}
                   </h4>
                   <p className="text-sm text-cyan-400">
-                    {TESTIMONIALS[activeIndex].position}
+                    {TESTIMONIALS[activeIndex]?.position}
                   </p>
                 </div>
               </div>

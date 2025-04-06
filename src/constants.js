@@ -12,49 +12,33 @@ export const CONTACT = {
     discord: "https://discord.gg/yourinvite",
   },
 };
-export const ABOUT_TEXT = {
-  title: "About Me",
-  description:
-    "I am a software engineer with a passion for building scalable and efficient systems. I have a strong foundation in computer science and software engineering principles. I am a quick learner and I am always looking for new challenges.",
-};
 
-export const PROJECTS = [
-  {
-    title: "Project 1",
-    description: "Project 1 description",
-  },
-];
-export const SKILLS = [
-  {
-    name: "Skill 1",
-    description: "Skill 1 description",
-  },
-];
-
-export const EDUCATION = [
-  {
-    school: "School 1",
-    degree: "Degree 1",
-    duration: "2020 - 2024",
-  },
-];
-
-export const EXPERIENCE = [
-  {
-    company: "Company 1",
-    position: "Position 1",
-    duration: "2020 - 2024",
-  },
-];
-
+export const ABOUT_TEXT = "";
+export const EDUCATION = [];
+export const PROJECTS = [];
 export const TESTIMONIALS = [
   {
-    name: "Testimonial 1",
-    description: "Testimonial 1 description",
+    text: "Working with Sanandan was an absolute pleasure. His attention to detail and problem-solving skills helped us deliver a complex project ahead of schedule. His expertise in modern web technologies is truly impressive.",
+    name: "Sarah Johnson",
+    position: "Project Manager at TechCorp",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
+  },
+  {
+    text: "Sanandan's technical skills are matched only by his excellent communication abilities. He consistently delivered high-quality code and was always willing to explain complex concepts to the team.",
+    name: "Michael Chen",
+    position: "Senior Developer at InnovateTech",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
+  },
+  {
+    text: "I was impressed by Sanandan's ability to quickly understand our requirements and implement solutions that exceeded our expectations. His work ethic and dedication to quality are outstanding.",
+    name: "Emily Rodriguez",
+    position: "CTO at StartupX",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
   },
 ];
 
-export const HERO_CONTENT = {
-  title: "Hero Title",
-  description: "Hero Description",
-};
+export const HERO_CONTENT = "oi hoi";
+export const SKILLS = [];
