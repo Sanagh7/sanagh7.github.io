@@ -12,3 +12,8 @@ export const CONTACT = {
     discord: "https://discord.gg/yourinvite",
   },
 };
+export const ABOUT_TEXT = {
+  title: "About Me",
+  description:
+    "I am a software engineer with a passion for building scalable and efficient systems. I have a strong foundation in computer science and software engineering principles. I am a quick learner and I am always looking for new challenges.",
+};
