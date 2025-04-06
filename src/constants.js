@@ -24,3 +24,32 @@ export const PROJECTS = [
     description: "Project 1 description",
   },
 ];
+export const SKILLS = [
+  {
+    name: "Skill 1",
+    description: "Skill 1 description",
+  },
+];
+
+export const EDUCATION = [
+  {
+    school: "School 1",
+    degree: "Degree 1",
+    duration: "2020 - 2024",
+  },
+];
+
+export const EXPERIENCE = [
+  {
+    company: "Company 1",
+    position: "Position 1",
+    duration: "2020 - 2024",
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    name: "Testimonial 1",
+    description: "Testimonial 1 description",
+  },
+];
