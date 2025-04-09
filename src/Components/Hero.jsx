@@ -6,8 +6,6 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
-  const profileRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const texts = [
@@ -36,20 +34,6 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [displayText, currentIndex, texts]);
 
-  // Add mouse parallax effect
-  const handleMouseMove = (e) => {
-    // Update mouse coordinates relative to the center of the screen
-    setMousePosition({
-      x: (e.clientX - window.innerWidth / 2) / 30,
-      y: (e.clientY - window.innerHeight / 2) / 30,
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -58,76 +42,27 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 3D tilt effect for profile image
-  useEffect(() => {
-    const profileEl = profileRef.current;
-    if (!profileEl) return;
-
-    const handleMouseMove = (e) => {
-      const rect = profileEl.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-
-      const tiltX = (y - 0.5) * 20; // tilt angle in degrees
-      const tiltY = (x - 0.5) * -20;
-
-      profileEl.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.05, 1.05, 1.05)`;
-    };
-
-    const handleMouseLeave = () => {
-      profileEl.style.transform =
-        "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
-    };
-
-    profileEl.addEventListener("mousemove", handleMouseMove);
-    profileEl.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      profileEl.removeEventListener("mousemove", handleMouseMove);
-      profileEl.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated background elements */}
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20 sm:pb-0">
+      {/* Simplified background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 blur-3xl animate-float"></div>
-        <div
-          className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div className="particle-container">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full bg-cyan-500"
-              style={{
-                width: Math.random() * 4 + 1 + "px",
-                height: Math.random() * 4 + 1 + "px",
-                left: Math.random() * 100 + "%",
-                top: Math.random() * 100 + "%",
-                animation: `float ${Math.random() * 8 + 4}s linear infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute left-1/4 top-1/4 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-[250px] sm:h-[400px] w-[250px] sm:w-[400px] rounded-full bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-6 text-center">
+      <div className="container mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="relative"
         >
-          <h1 className="mb-6 text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-            <span className="animate-neon-pulse">Hi, I'm </span>
+          <h1 className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span>Hi, I'm </span>
             <span className="gradient-text">Sanandan Ghimire</span>
           </h1>
 
-          <div className="mb-8 text-2xl font-light text-neutral-400 sm:text-3xl">
+          <div className="mb-6 sm:mb-8 text-xl sm:text-2xl md:text-3xl font-light text-neutral-400">
             <span className="gradient-text inline-block min-h-[1.5em]">
               {displayText}
               <span className="animate-blink">|</span>
@@ -137,8 +72,8 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto mb-12 max-w-3xl text-lg text-neutral-400"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mx-auto mb-8 sm:mb-12 max-w-3xl text-base sm:text-lg text-neutral-400 px-4"
           >
             {HERO_CONTENT}
           </motion.p>
@@ -146,24 +81,24 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center gap-6"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16 sm:mb-0"
           >
             <a
               href="#projects"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white animate-glow-border hover-scale"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white hover-scale w-full sm:w-auto"
             >
               <span className="absolute h-full w-full bg-gradient-to-r from-cyan-500 to-blue-500"></span>
-              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-8 py-3.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base transition-all duration-300 ease-out group-hover:bg-opacity-0">
                 View Projects
               </span>
             </a>
             <a
               href="#contact"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white hover-scale"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white hover-scale w-full sm:w-auto"
             >
               <span className="absolute h-full w-full bg-gradient-to-r from-purple-500 to-pink-500"></span>
-              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-8 py-3.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base transition-all duration-300 ease-out group-hover:bg-opacity-0">
                 Contact Me
               </span>
             </a>
@@ -174,15 +109,15 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="fixed sm:absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2"
         >
           <a
             href="#about"
             className="flex flex-col items-center text-neutral-400 transition-colors hover:text-cyan-400"
           >
-            <span className="mb-2 text-sm">Scroll Down</span>
-            <FaArrowDown className="animate-float" />
+            <span className="mb-2 text-xs sm:text-sm">Scroll Down</span>
+            <FaArrowDown className="animate-float text-sm sm:text-base" />
           </a>
         </motion.div>
       </div>

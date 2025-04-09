@@ -29,7 +29,10 @@ import {
   FaJenkins,
 } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { motion } from "framer-motion";
+import { FaCode } from "react-icons/fa";
+import { FaRocket, FaCode as FaCodeIcon, FaUserGraduate } from "react-icons/fa";
 
 // Map of technology names to their respective icons
 const techIcons = {
@@ -92,214 +95,161 @@ const getTechIcon = (techName) => {
 
 const Technologies = () => {
   const [activeCategory, setActiveCategory] = useState(0);
-  const spotlightRef = useRef(null);
   const [hoveredTech, setHoveredTech] = useState(null);
 
-  // Handle spotlight effect on skill section
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { current: container } = spotlightRef;
-      if (!container) return;
-
-      const { clientX, clientY } = e;
-      const rect = container.getBoundingClientRect();
-      const x = ((clientX - rect.left) / rect.width) * 100;
-      const y = ((clientY - rect.top) / rect.height) * 100;
-
-      container.style.setProperty("--x", `${x}%`);
-      container.style.setProperty("--y", `${y}%`);
-    };
-
-    const container = spotlightRef.current;
-    if (container) {
-      container.addEventListener("mousemove", handleMouseMove);
-      return () => container.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, []);
-
-  // Handle ripple effect
-  const handleRipple = (e) => {
-    const button = e.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const ripple = document.createElement("span");
-    ripple.className = "ripple";
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-
-    button.appendChild(ripple);
-
-    setTimeout(() => {
-      ripple.remove();
-    }, 1000);
-  };
-
-  // Function to chunk technologies into rows
-  const chunkTechnologies = (techArray, size) => {
-    const chunkedArr = [];
-    for (let i = 0; i < techArray.length; i += size) {
-      chunkedArr.push(techArray.slice(i, i + size));
-    }
-    return chunkedArr;
-  };
+  // Memoize technology cards to prevent unnecessary re-renders
+  const technologyCards = useMemo(() => {
+    return SKILLS[activeCategory].technologies.map((tech, index) => (
+      <motion.div
+        key={tech}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.05 }}
+        className="group flex flex-col items-center px-1 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 mb-4"
+        onMouseEnter={() => setHoveredTech(tech)}
+        onMouseLeave={() => setHoveredTech(null)}
+      >
+        <div
+          className={`relative mb-1 rounded-lg border overflow-hidden bg-neutral-900/70 backdrop-blur-sm p-2 transition-all duration-300 
+          ${
+            hoveredTech === tech
+              ? "border-cyan-500 shadow-lg shadow-cyan-500/20 scale-105"
+              : "border-neutral-800 hover:border-cyan-700/70 hover:shadow-md hover:shadow-cyan-900/20"
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-blue-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative z-10 text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:text-cyan-400">
+            {getTechIcon(tech)}
+          </div>
+        </div>
+        <span className="text-center text-[10px] sm:text-xs text-neutral-400 group-hover:text-cyan-400 transition-colors duration-300 font-medium">
+          {tech}
+        </span>
+      </motion.div>
+    ));
+  }, [activeCategory, hoveredTech]);
 
   return (
     <div className="relative border-b border-neutral-800 pb-24">
       {/* Background effect */}
       <div className="absolute left-0 right-0 top-0 h-full w-full overflow-hidden -z-10">
-        <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-cyan-900/20 blur-3xl animated-blob"></div>
-        <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-blue-900/20 blur-3xl animated-blob animation-delay-2000"></div>
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-purple-900/10 blur-3xl morphing-bg"></div>
+        <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-cyan-900/20 blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-blue-900/20 blur-3xl"></div>
       </div>
 
-      <h2 className="my-16 text-center text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 glow-text-sm">
-        Technologies & Skills
-      </h2>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="container mx-auto px-4"
+      >
+        <div className="text-center mb-12">
+          <h2 className="mb-6 text-5xl font-light tracking-tight text-white">
+            <span className="mr-2 inline-block rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-2 py-1 text-3xl font-bold text-white">
+              <FaCode />
+            </span>
+            Technologies & Skills
+          </h2>
+          <p className="mx-auto max-w-2xl text-neutral-400 leading-relaxed">
+            A comprehensive overview of the technologies and tools I work with.
+            Each category represents a different aspect of my technical
+            expertise.
+          </p>
+        </div>
 
-      {/* Category Navigation */}
-      <div className="mb-12 flex flex-wrap justify-center gap-4">
-        {SKILLS.map((skillCategory, categoryIndex) => (
-          <button
-            key={categoryIndex}
-            className={`relative ripple-container overflow-hidden rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-              activeCategory === categoryIndex
-                ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
-                : "bg-neutral-800/80 text-neutral-400 hover:bg-neutral-700 hover:text-white"
-            }`}
-            onClick={(e) => {
-              setActiveCategory(categoryIndex);
-              handleRipple(e);
-            }}
-          >
-            {skillCategory.category}
-          </button>
-        ))}
-      </div>
+        {/* Category Navigation */}
+        <div className="mb-8 flex flex-wrap justify-center gap-3">
+          {SKILLS.map((skillCategory, categoryIndex) => (
+            <motion.button
+              key={categoryIndex}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`relative overflow-hidden rounded-full px-5 py-1.5 text-sm font-medium transition-all duration-300 ${
+                activeCategory === categoryIndex
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
+                  : "bg-neutral-800/80 text-neutral-400 hover:bg-neutral-700 hover:text-white"
+              }`}
+              onClick={() => setActiveCategory(categoryIndex)}
+            >
+              {skillCategory.category}
+            </motion.button>
+          ))}
+        </div>
 
-      <div ref={spotlightRef} className="spotlight">
-        {/* Display single active category with enhanced animations */}
-        <div className="parallax-container">
-          <h3 className="mb-10 text-center text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 slide-in-bottom">
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="container mx-auto px-4"
+        >
+          <h3 className="mb-6 text-center text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
             {SKILLS[activeCategory].category}
           </h3>
 
-          {/* Grid layout for technologies - adaptive rows based on screen size */}
-          <div className="container mx-auto px-4">
-            {chunkTechnologies(SKILLS[activeCategory].technologies, 5).map(
-              (row, rowIndex) => (
-                <div
-                  key={rowIndex}
-                  className="flex flex-wrap justify-center mb-8"
-                >
-                  {row.map((tech, techIndex) => (
-                    <div
-                      key={techIndex}
-                      className="group flex flex-col items-center px-2 w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 mb-6 fade-in-up"
-                      style={{
-                        animationDelay: `${(rowIndex * 6 + techIndex) * 0.05}s`,
-                      }}
-                      onMouseEnter={() => setHoveredTech(tech)}
-                      onMouseLeave={() => setHoveredTech(null)}
-                    >
-                      <div
-                        className={`relative mb-2 rounded-lg border border-neutral-800 overflow-hidden bg-neutral-900/70 backdrop-blur-sm p-3 transition-all duration-300 
-                        ${
-                          hoveredTech === tech
-                            ? "border-cyan-600 shadow-lg shadow-cyan-600/30 scale-110"
-                            : "border-neutral-800 hover:border-cyan-700/70 hover:shadow-md hover:shadow-cyan-900/20 scale-100"
-                        } 
-                        transform hover:scale-105 card-rotate w-full aspect-square flex items-center justify-center`}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-blue-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative z-10 text-2xl sm:text-3xl md:text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:text-cyan-400">
-                          {getTechIcon(tech)}
-                        </div>
-                      </div>
-                      <span className="text-center text-[10px] sm:text-xs text-neutral-400 md:text-xs group-hover:text-cyan-400 transition-colors duration-300 font-medium">
-                        {tech}
-                      </span>
-                    </div>
-                  ))}
+          <div className="flex flex-wrap justify-center gap-2">
+            {technologyCards}
+          </div>
+        </motion.div>
+
+        {/* Learning Journey Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm"
+        >
+          <h3 className="mb-6 text-center text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            Learning Journey
+          </h3>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-2">
+                  <FaRocket className="text-xl text-cyan-400" />
                 </div>
-              )
-            )}
+                <h4 className="text-lg font-semibold text-white">
+                  Current Focus
+                </h4>
+              </div>
+              <p className="text-neutral-400">
+                Deep diving into advanced technologies and frameworks to expand
+                my expertise and stay current with industry trends.
+              </p>
+            </div>
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-2">
+                  <FaCodeIcon className="text-xl text-purple-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-white">
+                  Tech Stack Evolution
+                </h4>
+              </div>
+              <p className="text-neutral-400">
+                Continuously evolving my tech stack by exploring new tools,
+                libraries, and frameworks to build better solutions.
+              </p>
+            </div>
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-2">
+                  <FaUserGraduate className="text-xl text-green-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-white">
+                  Knowledge Sharing
+                </h4>
+              </div>
+              <p className="text-neutral-400">
+                Contributing to the developer community through blog posts,
+                open-source projects, and knowledge sharing.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Proficiency Bars with gradient animation */}
-      <div className="mx-auto mt-24 max-w-3xl space-y-8 fade-in-up">
-        <h3 className="mb-10 text-center text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-          Proficiency
-        </h3>
-
-        <div className="transform hover:scale-102 transition-transform duration-300">
-          <div className="mb-2 flex justify-between">
-            <span className="text-sm font-medium">Frontend Development</span>
-            <span className="text-sm font-medium text-cyan-400">95%</span>
-          </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-neutral-800/70 backdrop-blur-sm shadow-inner">
-            <div
-              className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 pulse-animation"
-              style={{ width: "95%" }}
-            ></div>
-          </div>
-        </div>
-
-        <div className="transform hover:scale-102 transition-transform duration-300">
-          <div className="mb-2 flex justify-between">
-            <span className="text-sm font-medium">Backend Development</span>
-            <span className="text-sm font-medium text-cyan-400">90%</span>
-          </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-neutral-800/70 backdrop-blur-sm shadow-inner">
-            <div
-              className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 pulse-animation"
-              style={{ width: "90%", animationDelay: "0.2s" }}
-            ></div>
-          </div>
-        </div>
-
-        <div className="transform hover:scale-102 transition-transform duration-300">
-          <div className="mb-2 flex justify-between">
-            <span className="text-sm font-medium">Database Management</span>
-            <span className="text-sm font-medium text-cyan-400">85%</span>
-          </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-neutral-800/70 backdrop-blur-sm shadow-inner">
-            <div
-              className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 pulse-animation"
-              style={{ width: "85%", animationDelay: "0.4s" }}
-            ></div>
-          </div>
-        </div>
-
-        <div className="transform hover:scale-102 transition-transform duration-300">
-          <div className="mb-2 flex justify-between">
-            <span className="text-sm font-medium">DevOps</span>
-            <span className="text-sm font-medium text-cyan-400">75%</span>
-          </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-neutral-800/70 backdrop-blur-sm shadow-inner">
-            <div
-              className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 pulse-animation"
-              style={{ width: "75%", animationDelay: "0.6s" }}
-            ></div>
-          </div>
-        </div>
-
-        <div className="transform hover:scale-102 transition-transform duration-300">
-          <div className="mb-2 flex justify-between">
-            <span className="text-sm font-medium">Cyber Security</span>
-            <span className="text-sm font-medium text-cyan-400">88%</span>
-          </div>
-          <div className="h-3 w-full overflow-hidden rounded-full bg-neutral-800/70 backdrop-blur-sm shadow-inner">
-            <div
-              className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 pulse-animation"
-              style={{ width: "88%", animationDelay: "0.8s" }}
-            ></div>
-          </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

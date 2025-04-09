@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { TESTIMONIALS } from "../constants";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteLeft, FaPaw, FaFeather, FaDove } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -36,6 +37,32 @@ const Testimonials = () => {
       {/* Decorative elements */}
       <div className="absolute left-0 top-1/4 -z-10 h-72 w-72 rounded-full bg-cyan-900/5 blur-3xl"></div>
       <div className="absolute bottom-1/4 right-0 -z-10 h-72 w-72 rounded-full bg-purple-900/5 blur-3xl"></div>
+
+      {/* Floating animal elements */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute left-10 top-20 text-cyan-500/20"
+      >
+        <FaPaw className="h-8 w-8" />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute right-20 top-40 text-purple-500/20"
+      >
+        <FaFeather className="h-6 w-6" />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+        className="absolute left-1/4 bottom-20 text-blue-500/20"
+      >
+        <FaDove className="h-7 w-7" />
+      </motion.div>
 
       <h2 className="mb-16 text-center text-5xl font-light tracking-tight text-white">
         <span className="mr-2 inline-block rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-2 py-1 text-3xl font-bold text-white">
@@ -77,34 +104,54 @@ const Testimonials = () => {
                 isAnimating ? "opacity-0" : "opacity-100"
               }`}
             >
-              <p className="mb-8 text-lg leading-relaxed text-neutral-300 sm:text-xl">
-                <span className="mr-1 text-2xl text-cyan-500">"</span>
-                {TESTIMONIALS[activeIndex]
-                  ? TESTIMONIALS[activeIndex].text
-                  : ""}
-                <span className="ml-1 text-2xl text-cyan-500">"</span>
-              </p>
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50"
+              >
+                {/* Animal paw print effect */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileHover={{ opacity: 0.1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute -right-8 -top-8 text-cyan-500/20"
+                >
+                  <FaPaw className="h-16 w-16" />
+                </motion.div>
 
-              <div className="flex items-center">
-                <div className="relative mr-5">
-                  <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 opacity-75 blur"></div>
-                  <div className="relative h-16 w-16 overflow-hidden rounded-full">
-                    <img
-                      src={TESTIMONIALS[activeIndex]?.image}
-                      alt={TESTIMONIALS[activeIndex]?.name}
-                      className="h-full w-full object-cover"
-                    />
+                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-2xl transition-all duration-500 group-hover:from-cyan-500/20 group-hover:to-blue-500/20"></div>
+                <div className="relative z-10">
+                  <div className="mb-4 flex items-center gap-4">
+                    <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-neutral-800">
+                      <img
+                        src={
+                          TESTIMONIALS[activeIndex].name === "Sarthak Pokhrel"
+                            ? "https://avatars.githubusercontent.com/u/54739445?v=4"
+                            : TESTIMONIALS[activeIndex].image
+                        }
+                        alt={TESTIMONIALS[activeIndex].name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-semibold text-white">
+                        {TESTIMONIALS[activeIndex].name}
+                      </h4>
+                      <p className="text-sm text-neutral-400">
+                        {TESTIMONIALS[activeIndex].role}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium text-white">
-                    {TESTIMONIALS[activeIndex]?.name}
-                  </h4>
-                  <p className="text-sm text-cyan-400">
-                    {TESTIMONIALS[activeIndex]?.position}
+                  <p className="text-lg text-neutral-300 leading-relaxed">
+                    <span className="mr-1 text-2xl text-cyan-500">"</span>
+                    {TESTIMONIALS[activeIndex].text}
+                    <span className="ml-1 text-2xl text-cyan-500">"</span>
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

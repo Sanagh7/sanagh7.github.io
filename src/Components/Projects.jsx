@@ -1,167 +1,154 @@
 // src/components/Projects.js
-import React, { useRef, useState, useEffect, useMemo } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import { PROJECTS } from "../constants";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-function Projects() {
-  const scrollRef = useRef(null);
-  const [active, setActive] = useState(null);
-  const cardRefs = useRef([]);
+const Projects = () => {
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Handle mouse cursor effect
-  useEffect(() => {
-    // Create cursor glow element
-    const cursorGlowContainer = document.createElement("div");
-    cursorGlowContainer.className = "cursor-glow-container";
-    const cursorGlow = document.createElement("div");
-    cursorGlow.className = "cursor-glow";
-    cursorGlowContainer.appendChild(cursorGlow);
-    document.body.appendChild(cursorGlowContainer);
-
-    // Handle mouse movement
-    const handleMouseMove = (e) => {
-      cursorGlow.style.opacity = "1";
-      cursorGlow.style.left = `${e.clientX}px`;
-      cursorGlow.style.top = `${e.clientY}px`;
-    };
-
-    // Handle mouse leave
-    const handleMouseLeave = () => {
-      cursorGlow.style.opacity = "0";
-    };
-
-    // Add event listeners
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    // Clean up
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.body.removeChild(cursorGlowContainer);
-    };
+  // Optimize mouse move handler with debounce
+  const handleMouseMove = useCallback((e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
   }, []);
 
-  // Spotlight effect for cards
-  const handleMouseMove = (e, index) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    card.style.setProperty("--x", `${x}%`);
-    card.style.setProperty("--y", `${y}%`);
-  };
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [handleMouseMove]);
 
   // Memoize project cards to prevent unnecessary re-renders
-  const projectCards = useMemo(
-    () =>
-      PROJECTS.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="group relative overflow-hidden rounded-xl bg-neutral-900/50 backdrop-blur-sm hover-lift glass-effect"
-        >
-          {/* Project Image with overlay */}
-          <div className="relative overflow-hidden">
-            <div className="aspect-w-16 aspect-h-9">
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+  const projectCards = useMemo(() => {
+    return PROJECTS.map((project, index) => (
+      <motion.div
+        key={project.id}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="group relative overflow-hidden rounded-xl bg-neutral-900/70 backdrop-blur-sm border border-neutral-800/50 hover:border-cyan-500/30 transition-all duration-300"
+        onMouseEnter={() => setHoveredProject(project.id)}
+        onMouseLeave={() => setHoveredProject(null)}
+      >
+        {/* Project Image with Overlay */}
+        <div className="relative aspect-video overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+
+          {/* Project Links Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur-sm transition-transform hover:scale-110 hover:bg-cyan-500"
+              aria-label="View on GitHub"
+            >
+              <FaGithub size={18} className="sm:text-xl" />
+            </a>
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition-transform hover:scale-110"
+              aria-label="View Live Demo"
+            >
+              <FaExternalLinkAlt size={16} className="sm:text-lg" />
+            </a>
           </div>
+        </div>
 
-          {/* Project Info */}
-          <div className="relative p-6">
-            <h3 className="mb-2 text-2xl font-bold text-white hover-glow">
-              {project.title}
-            </h3>
-            <p className="mb-4 text-neutral-400">{project.description}</p>
+        {/* Project Info */}
+        <div className="p-4 sm:p-6">
+          <h3 className="mb-2 text-lg sm:text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
+            {project.title}
+          </h3>
+          <p className="mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed text-neutral-400">
+            {project.description}
+          </p>
 
-            {/* Technologies */}
-            <div className="mb-6 flex flex-wrap gap-2">
-              {project.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="rounded-full bg-cyan-900/20 px-3 py-1 text-xs text-cyan-400 animate-gradient"
-                  style={{ animationDelay: `${techIndex * 0.1}s` }}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Links */}
-            <div className="flex gap-4">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-full bg-neutral-800 px-4 py-2 text-sm text-white transition-all duration-300 hover:bg-cyan-600 animate-glow-border"
+          {/* Technologies */}
+          <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+            {project.technologies.map((tech, techIndex) => (
+              <span
+                key={techIndex}
+                className="rounded-full bg-neutral-800/50 px-2 sm:px-3 py-0.5 sm:py-1 text-xs text-neutral-400 transition-colors group-hover:bg-cyan-900/30 group-hover:text-cyan-400"
               >
-                <FaGithub className="text-lg" />
-                <span>View Code</span>
-              </a>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm text-white transition-all duration-300 hover:opacity-90 animate-glow-border"
-              >
-                <FaExternalLinkAlt className="text-sm" />
-                <span>Live Demo</span>
-              </a>
-            </div>
-
-            {/* Hover effect overlay */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-600/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                {tech}
+              </span>
+            ))}
           </div>
-        </motion.div>
-      )),
-    []
-  );
+        </div>
+      </motion.div>
+    ));
+  }, []);
 
   return (
-    <div className="relative border-b border-neutral-800 pb-20 pt-20">
-      {/* Background effects */}
-      <div className="absolute left-0 right-0 top-0 h-full w-full overflow-hidden -z-10">
-        <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-3xl animate-float"></div>
-        <div
-          className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div>
+    <div className="relative border-b border-neutral-800/50 py-12 sm:py-20">
+      {/* Background Effects */}
+      <div className="absolute left-0 top-1/4 -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-0 -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         viewport={{ once: true, margin: "-50px" }}
-        className="mb-16 text-center"
+        className="container mx-auto px-4"
       >
-        <h2 className="text-5xl font-light tracking-tight animate-neon-pulse">
-          Featured <span className="gradient-text font-bold">Projects</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
-          Explore some of my recent work and personal projects
-        </p>
-      </motion.div>
+        {/* Section Header */}
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="mb-4 sm:mb-6 text-3xl sm:text-5xl font-light tracking-tight text-white">
+            <span className="mr-2 inline-block rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-2 py-1 text-2xl sm:text-3xl font-bold text-white">
+              <FaCode />
+            </span>
+            Featured Projects
+          </h2>
+          <p className="mx-auto max-w-2xl text-sm sm:text-base text-neutral-400 leading-relaxed">
+            Here are some of my recent projects that showcase my skills and
+            experience. Each project demonstrates different aspects of my
+            technical expertise.
+          </p>
+        </div>
 
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        {projectCards}
-      </div>
+        {/* Projects Grid */}
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {projectCards}
+        </div>
+
+        {/* View More Projects Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-10 sm:mt-16 text-center"
+        >
+          <a
+            href="https://github.com/Sanagh7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+          >
+            <FaGithub className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span>View More Projects on GitHub</span>
+          </a>
+        </motion.div>
+      </motion.div>
     </div>
   );
-}
+};
 
 export default Projects;

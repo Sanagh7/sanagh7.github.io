@@ -190,3 +190,13 @@ export const CONTACT = {
     instagram: "https://instagram.com/sanandan.ghimire",
   },
 };
+
+// Add new section for achievements and statistics
+export const ACHIEVEMENTS = {
+  stats: [
+    { label: "Projects Completed", value: "25+" },
+    { label: "Happy Clients", value: "15+" },
+    { label: "Years Experience", value: "3+" },
+    { label: "Technologies", value: "20+" },
+  ],
+};

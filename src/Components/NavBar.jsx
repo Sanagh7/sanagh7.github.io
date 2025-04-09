@@ -22,6 +22,7 @@ const NavBar = () => {
     { id: "about", label: "About" },
     { id: "education", label: "Education" },
     { id: "skills", label: "Skills" },
+    { id: "achievements", label: "Achievements" },
     { id: "projects", label: "Projects" },
     { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },
@@ -169,90 +170,30 @@ const NavBar = () => {
   const SocialIcon = ({ social, className = "" }) => {
     const Icon = social.icon;
     const [isHovered, setIsHovered] = useState(false);
-    const iconRef = useRef(null);
-
-    // Create particles on click
-    const createParticles = (e) => {
-      if (!iconRef.current) return;
-
-      const iconRect = iconRef.current.getBoundingClientRect();
-      const iconCenterX = iconRect.left + iconRect.width / 2;
-      const iconCenterY = iconRect.top + iconRect.height / 2;
-
-      // Create 10 particles
-      for (let i = 0; i < 10; i++) {
-        const particle = document.createElement("div");
-        particle.classList.add("particle");
-
-        // Random position around the center
-        const x = Math.random() * 60 - 30; // -30 to 30
-        const y = Math.random() * 60 - 30; // -30 to 30
-
-        particle.style.setProperty("--x", `${x}px`);
-        particle.style.setProperty("--y", `${y}px`);
-
-        // Position at icon center
-        particle.style.left = `${iconCenterX}px`;
-        particle.style.top = `${iconCenterY}px`;
-
-        // Add to body
-        document.body.appendChild(particle);
-
-        // Start animation
-        setTimeout(() => {
-          particle.classList.add("particle-animation");
-        }, 10);
-
-        // Remove after animation
-        setTimeout(() => {
-          document.body.removeChild(particle);
-        }, 1000);
-      }
-    };
 
     return (
       <a
-        ref={iconRef}
         href={social.url}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={social.label}
-        className={`social-icon tooltip group relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full transition-all duration-300 hover:scale-110 ${
-          social.wave
-        } social-icon-pulse shimmer-effect ${
-          popIcon === social.id ? "social-icon-pop" : ""
-        } ${className}`}
-        style={{ animationDelay: social.delay }}
-        onMouseEnter={() => {
-          handleIconHover(social.id);
-          setIsHovered(true);
-        }}
+        className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-105 ${className}`}
+        onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={createParticles}
       >
-        <div className="rainbow-trail"></div>
-        <div className="sparkle sparkle-1"></div>
-        <div className="sparkle sparkle-2"></div>
-        <div className="sparkle sparkle-3"></div>
-        <div className="sparkle sparkle-4"></div>
-
         <span
-          className={`absolute inset-0 z-0 rounded-full bg-gradient-to-r ${
+          className={`absolute inset-0 rounded-full bg-gradient-to-r ${
             social.color
           } ${
-            isHovered ? "opacity-80" : "opacity-10"
-          } blur-sm transition-opacity duration-300 social-icon-glow`}
-          style={{ animationDelay: social.delay }}
+            isHovered ? "opacity-20" : "opacity-0"
+          } transition-opacity duration-300`}
         ></span>
 
         <Icon
           className={`relative z-10 text-lg ${
             isHovered ? "text-white" : "text-neutral-400"
-          } transition-colors duration-300 social-icon-scale`}
-          style={{ animationDelay: social.delay }}
+          } transition-colors duration-300`}
         />
-
-        <span className="tooltip-text">{social.label}</span>
       </a>
     );
   };

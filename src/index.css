@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Simplified social icon styles */
+.social-icon-container {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Remove complex animations and effects */
+.social-icon-glow,
+.social-icon-float,
+.social-icon-wave,
+.social-icon-wave-1,
+.social-icon-wave-2,
+.social-icon-wave-3,
+.social-icon-wave-4,
+.social-icon-pulse,
+.social-icon-scale,
+.shimmer-effect,
+.social-icon-rotate,
+.social-icon-pop,
+.sparkle,
+.sparkle-1,
+.sparkle-2,
+.sparkle-3,
+.sparkle-4,
+.rainbow-trail,
+.particle,
+.particle-animation {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+/* Keep other animations and styles */
 @keyframes glow-pulse {
   0% {
     opacity: 0.1;
@@ -208,11 +243,6 @@
 
 .social-icon:hover::before {
   opacity: 1;
-}
-
-.social-icon-container {
-  display: flex;
-  gap: 1.25rem; /* gap-5 equivalent */
 }
 
 /* Shimmer effect */

@@ -10,6 +10,7 @@ import Contact from "./Components/Contact";
 import Testimonials from "./Components/Testimonials";
 import Footer from "./Components/Footer";
 import Education from "./Components/Education";
+import Achievements from "./Components/Achievements";
 
 import Home from "./Components/Home";
 import Hero from "./Components/Hero";
@@ -81,6 +82,9 @@ function App() {
           </section>
           <section id="skills">
             <Technologies />
+          </section>
+          <section id="achievements">
+            <Achievements />
           </section>
           <section id="projects">
             <Projects />

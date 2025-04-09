@@ -3,7 +3,7 @@ export const CONTACT = {
   phone: "+9745415142",
   address: "Kathmandu, Nepal",
   socialLinks: {
-    github: "https://github.com/sanandan-gh",
+    github: "https://github.com/Sanagh7",
     linkedin: "https://www.linkedin.com/in/sanandan-ghimire/",
     twitter: "https://twitter.com/yourusername",
     instagram: "https://instagram.com/yourusername",
@@ -17,15 +17,6 @@ export const ABOUT_TEXT =
   "I'm a passionate full-stack developer with over 3 years of experience building modern web applications. My expertise includes React, Node.js, and cloud architecture. I focus on creating clean, efficient, and user-friendly solutions that solve real-world problems. My background in computer science combined with a keen eye for design allows me to bridge the gap between functionality and aesthetics. When I'm not coding, you'll find me hiking in the mountains or exploring new technologies.";
 
 export const EDUCATION = [
-  // {
-  //   degree: "Master of Science in Computer Science",
-  //   institution: "Tribhuvan University",
-  //   location: "Kathmandu, Nepal",
-  //   period: "2017 - 2019",
-  //   description:
-  //     "Specialized in Artificial Intelligence and Web Technologies. Graduated with distinction.",
-  //   logo: "https://images.unsplash.com/photo-1592303637753-ce1e6b8a0a3c?w=100&h=100&fit=crop",
-  // },
   {
     degree: "Bachelor of Engineering in Computer Science",
     institution: "Himalaya College of Engineering",
@@ -100,28 +91,26 @@ export const TESTIMONIALS = [
   {
     text: "Working with Sanandan was an absolute pleasure. His attention to detail and problem-solving skills helped us deliver a complex project ahead of schedule. His expertise in modern web technologies is truly impressive.",
     name: "Sarthak Pokhrel",
-    position: "Project Manager at TechCorp",
+    position: "AI/ML Engineer ",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
   },
-  {
-    text: "Sanandan's technical skills are matched only by his excellent communication abilities. He consistently delivered high-quality code and was always willing to explain complex concepts to the team.",
-    name: "Michael Chen",
-    position: "Senior Developer at InnovateTech",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
-  },
-  {
-    text: "I was impressed by Sanandan's ability to quickly understand our requirements and implement solutions that exceeded our expectations. His work ethic and dedication to quality are outstanding.",
-    name: "Emily Rodriguez",
-    position: "CTO at StartupX",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
-  },
+  // {
+  //   text: "Sanandan's technical skills are matched only by his excellent communication abilities. He consistently delivered high-quality code and was always willing to explain complex concepts to the team.",
+  //   name: "Shusbin Tripathi",
+  //   position: "Web Developer",
+  //   image: "",
+  // },
+  // {
+  //   text: "I was impressed by Sanandan's ability to quickly understand our requirements and implement solutions that exceeded our expectations. His work ethic and dedication to quality are outstanding.",
+  //   name: "Abishek Shrestha",
+  //   position: "Cyber Security Engineer",
+  //   image: "",
+  // },
 ];
 
 export const HERO_CONTENT =
-  "I'm a versatile Full-Stack Developer with 5+ years of experience specializing in React, Node.js, and cybersecurity. Passionate about creating elegant solutions to complex problems, I focus on building secure, scalable, and user-friendly web applications that deliver exceptional experiences. My expertise spans from responsive front-end interfaces to robust back-end systems and secure infrastructure.";
+  "I'm a versatile Full-Stack Developer with 2+ years of experience specializing in React, Node.js, and cybersecurity. Passionate about creating elegant solutions to complex problems, I focus on building secure, scalable, and user-friendly web applications that deliver exceptional experiences. My expertise spans from responsive front-end interfaces to robust back-end systems and secure infrastructure.";
 
 export const SKILLS = [
   {
