@@ -28,76 +28,6 @@ const NavBar = () => {
     { id: "contact", label: "Contact" },
   ];
 
-  // Social media data
-  const socialLinks = [
-    {
-      id: "linkedin",
-      label: "LinkedIn",
-      icon: FaLinkedin,
-      url: CONTACT.socialLinks.linkedin,
-      color: "from-cyan-400 to-blue-500",
-      wave: "social-icon-wave-1",
-      delay: "0s",
-    },
-    {
-      id: "github",
-      label: "GitHub",
-      icon: FaGithub,
-      url: CONTACT.socialLinks.github,
-      color: "from-purple-400 to-indigo-500",
-      wave: "social-icon-wave-2",
-      delay: "0.75s",
-    },
-    {
-      id: "twitter",
-      label: "Twitter",
-      icon: FaXTwitter,
-      url: CONTACT.socialLinks.twitter,
-      color: "from-blue-400 to-cyan-500",
-      wave: "social-icon-wave-3",
-      delay: "1.5s",
-    },
-    {
-      id: "instagram",
-      label: "Instagram",
-      icon: FaInstagram,
-      url: CONTACT.socialLinks.instagram,
-      color: "from-pink-500 to-rose-500",
-      wave: "social-icon-wave-4",
-      delay: "2.25s",
-    },
-    {
-      id: "youtube",
-      label: "YouTube",
-      icon: FaYoutube,
-      url: CONTACT.socialLinks.youtube || "#",
-      color: "from-red-500 to-red-600",
-      wave: "social-icon-wave-1",
-      delay: "0.5s",
-    },
-    {
-      id: "tiktok",
-      label: "TikTok",
-      icon: SiTiktok,
-      url: CONTACT.socialLinks.tiktok || "#",
-      color: "from-black to-neutral-800",
-      wave: "social-icon-wave-2",
-      delay: "1.25s",
-    },
-    {
-      id: "discord",
-      label: "Discord",
-      icon: FaDiscord,
-      url: CONTACT.socialLinks.discord || "#",
-      color: "from-indigo-500 to-blue-600",
-      wave: "social-icon-wave-3",
-      delay: "1.75s",
-    },
-  ];
-
-  // Primary socials for desktop
-  const primarySocials = socialLinks.slice(0, 4);
-
   // Handle animation pop effect
   const handleIconHover = (id) => {
     setPopIcon(id);
@@ -166,38 +96,6 @@ const NavBar = () => {
     }
   };
 
-  // Social icon component
-  const SocialIcon = ({ social, className = "" }) => {
-    const Icon = social.icon;
-    const [isHovered, setIsHovered] = useState(false);
-
-    return (
-      <a
-        href={social.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={social.label}
-        className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-105 ${className}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <span
-          className={`absolute inset-0 rounded-full bg-gradient-to-r ${
-            social.color
-          } ${
-            isHovered ? "opacity-20" : "opacity-0"
-          } transition-opacity duration-300`}
-        ></span>
-
-        <Icon
-          className={`relative z-10 text-lg ${
-            isHovered ? "text-white" : "text-neutral-400"
-          } transition-colors duration-300`}
-        />
-      </a>
-    );
-  };
-
   return (
     <nav
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
@@ -206,9 +104,9 @@ const NavBar = () => {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center md:mr-8">
           <a
             href="#home"
             className="text-xl font-semibold"
@@ -224,7 +122,7 @@ const NavBar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden md:flex flex-1 justify-center items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -243,46 +141,6 @@ const NavBar = () => {
             </a>
           ))}
         </div>
-
-        {/* Social Icons - Desktop */}
-        <div className="hidden items-center social-icon-container md:flex">
-          {primarySocials.map((social) => (
-            <SocialIcon key={social.id} social={social} />
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="flex items-center md:hidden"
-          onClick={toggleMobileMenu}
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label="Toggle menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -313,15 +171,6 @@ const NavBar = () => {
                 {item.label}
               </a>
             ))}
-
-            <div className="social-group">
-              <h3 className="social-group-title">Connect With Me</h3>
-              <div className="grid grid-cols-3 gap-3">
-                {socialLinks.map((social) => (
-                  <SocialIcon key={social.id} social={social} />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       )}

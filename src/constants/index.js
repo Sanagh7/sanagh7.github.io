@@ -186,8 +186,6 @@ export const CONTACT = {
   socialLinks: {
     github: "https://github.com/sanandan-ghimire",
     linkedin: "https://linkedin.com/in/sanandan-ghimire",
-    twitter: "https://twitter.com/sanandan_ghimire",
-    instagram: "https://instagram.com/sanandan.ghimire",
   },
 };
 

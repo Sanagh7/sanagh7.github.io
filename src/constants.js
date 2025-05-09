@@ -5,8 +5,6 @@ export const CONTACT = {
   socialLinks: {
     github: "https://github.com/Sanagh7",
     linkedin: "https://www.linkedin.com/in/sanandan-ghimire/",
-    twitter: "https://twitter.com/yourusername",
-    instagram: "https://instagram.com/yourusername",
     youtube: "https://youtube.com/@yourusername",
     tiktok: "https://tiktok.com/@yourusername",
     discord: "https://discord.gg/yourinvite",

@@ -243,24 +243,6 @@ function Contact() {
                     >
                       <FaLinkedin size={20} />
                     </a>
-                    <a
-                      href={CONTACT.socialLinks.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
-                      aria-label="Twitter"
-                    >
-                      <FaTwitter size={20} />
-                    </a>
-                    <a
-                      href={CONTACT.socialLinks.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
-                      aria-label="Instagram"
-                    >
-                      <FaInstagram size={20} />
-                    </a>
                   </div>
                 </motion.div>
               </div>

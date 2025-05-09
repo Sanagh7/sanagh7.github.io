@@ -51,24 +51,6 @@ const Footer = () => {
               >
                 <FaLinkedin size={18} />
               </a>
-              <a
-                href={CONTACT.socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
-                aria-label="Twitter"
-              >
-                <FaTwitter size={18} />
-              </a>
-              <a
-                href={CONTACT.socialLinks.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
-                aria-label="Instagram"
-              >
-                <FaInstagram size={18} />
-              </a>
             </div>
           </div>
 
