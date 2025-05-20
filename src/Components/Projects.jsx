@@ -101,52 +101,97 @@ const Projects = () => {
       <div className="absolute left-0 top-1/4 -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
       <div className="absolute bottom-1/4 right-0 -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true, margin: "-50px" }}
-        className="container mx-auto px-4"
-      >
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="mb-4 sm:mb-6 text-3xl sm:text-5xl font-light tracking-tight text-white">
-            <span className="mr-2 inline-block rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-2 py-1 text-2xl sm:text-3xl font-bold text-white">
-              <FaCode />
-            </span>
-            Featured Projects
-          </h2>
-          <p className="mx-auto max-w-2xl text-sm sm:text-base text-neutral-400 leading-relaxed">
-            Here are some of my recent projects that showcase my skills and
-            experience. Each project demonstrates different aspects of my
-            technical expertise.
-          </p>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {projectCards}
-        </div>
-
-        {/* View More Projects Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mt-10 sm:mt-16 text-center"
-        >
-          <a
-            href="https://github.com/Sanagh7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-12 sm:mb-16"
           >
-            <FaGithub className="h-4 w-4 sm:h-5 sm:w-5" />
-            <span>View More Projects on GitHub</span>
-          </a>
-        </motion.div>
-      </motion.div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              My <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-neutral-400 max-w-2xl mx-auto">
+              Here are some of my recent projects. Each one is a unique challenge
+              that I've tackled with modern technologies and best practices.
+            </p>
+          </motion.div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {PROJECTS.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="group relative rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 p-4 sm:p-6 shadow-xl overflow-hidden"
+              >
+                {/* Project Image */}
+                <div className="relative mb-4 sm:mb-6 aspect-video overflow-hidden rounded-xl">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 to-transparent"></div>
+                </div>
+
+                {/* Project Content */}
+                <div className="relative">
+                  <h3 className="mb-2 text-xl sm:text-2xl font-semibold text-white">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-sm sm:text-base text-neutral-400">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mb-4 sm:mb-6 flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-xs sm:text-sm font-medium text-neutral-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Project Links */}
+                  <div className="flex items-center gap-4">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm sm:text-base text-neutral-400 hover:text-white transition-colors duration-300"
+                    >
+                      <FaGithub className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      Code
+                    </a>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm sm:text-base text-neutral-400 hover:text-white transition-colors duration-300"
+                    >
+                      <FaExternalLinkAlt className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      Live Demo
+                    </a>
+                  </div>
+                </div>
+
+                {/* Decorative Gradient */}
+                <div className="absolute -bottom-1 -right-1 -z-10 h-32 w-32 rounded-br-2xl bg-gradient-to-r from-cyan-500 to-blue-500 opacity-30 blur-xl"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

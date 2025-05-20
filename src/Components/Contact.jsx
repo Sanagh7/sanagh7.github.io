@@ -147,36 +147,37 @@ function Contact() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <div className="rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 p-8 shadow-xl">
+              <div className="rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 p-4 sm:p-8 shadow-xl">
                 <motion.h3
                   variants={itemVariants}
-                  className="mb-6 text-2xl font-medium text-white"
+                  className="mb-6 text-xl sm:text-2xl font-medium text-white"
                 >
                   Contact Information
                 </motion.h3>
                 <motion.p
                   variants={itemVariants}
-                  className="mb-8 text-neutral-400"
+                  className="mb-8 text-sm sm:text-base text-neutral-400"
                 >
                   I'm currently available for freelance work or full-time
                   positions. Feel free to reach out!
                 </motion.p>
 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <motion.div
                     variants={itemVariants}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-3 sm:gap-4"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
-                      <MdEmail size={24} />
+                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+                      <MdEmail size={20} className="sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-neutral-400">
                         Email
                       </p>
                       <a
                         href={`mailto:${CONTACT.email}`}
-                        className="block text-lg text-white transition-colors hover:text-cyan-400"
+                        className="block text-sm sm:text-lg text-white transition-colors hover:text-cyan-400 truncate"
+                        title={CONTACT.email}
                       >
                         {CONTACT.email}
                       </a>
@@ -185,33 +186,36 @@ function Contact() {
 
                   <motion.div
                     variants={itemVariants}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-3 sm:gap-4"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
-                      <MdLocationOn size={24} />
+                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+                      <MdLocationOn size={20} className="sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-neutral-400">
                         Location
                       </p>
-                      <p className="text-lg text-white">{CONTACT.address}</p>
+                      <p className="text-sm sm:text-lg text-white truncate" title={CONTACT.address}>
+                        {CONTACT.address}
+                      </p>
                     </div>
                   </motion.div>
 
                   <motion.div
                     variants={itemVariants}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-3 sm:gap-4"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
-                      <MdPhone size={24} />
+                    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+                      <MdPhone size={20} className="sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-neutral-400">
                         Phone
                       </p>
                       <a
                         href={`tel:${CONTACT.phone}`}
-                        className="block text-lg text-white transition-colors hover:text-cyan-400"
+                        className="block text-sm sm:text-lg text-white transition-colors hover:text-cyan-400 truncate"
+                        title={CONTACT.phone}
                       >
                         {CONTACT.phone}
                       </a>
@@ -220,28 +224,28 @@ function Contact() {
                 </div>
 
                 {/* Social Media */}
-                <motion.div variants={itemVariants} className="mt-12">
+                <motion.div variants={itemVariants} className="mt-8 sm:mt-12">
                   <p className="mb-4 text-sm font-medium text-neutral-400">
                     FIND ME ON
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex gap-3 sm:gap-4">
                     <a
                       href={CONTACT.socialLinks.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
+                      className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
                       aria-label="GitHub"
                     >
-                      <FaGithub size={20} />
+                      <FaGithub size={18} className="sm:w-5 sm:h-5" />
                     </a>
                     <a
                       href={CONTACT.socialLinks.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
+                      className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-900/20"
                       aria-label="LinkedIn"
                     >
-                      <FaLinkedin size={20} />
+                      <FaLinkedin size={18} className="sm:w-5 sm:h-5" />
                     </a>
                   </div>
                 </motion.div>
@@ -256,33 +260,33 @@ function Contact() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <div className="relative rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 p-8 shadow-xl">
+              <div className="relative rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 p-4 sm:p-8 shadow-xl">
                 {submitSuccess ? (
-                  <div className="flex flex-col items-center justify-center p-8 text-center">
-                    <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-green-600/20">
-                      <FaCheck className="text-4xl text-green-500" />
+                  <div className="flex flex-col items-center justify-center p-4 sm:p-8 text-center">
+                    <div className="mb-4 sm:mb-6 flex h-16 w-16 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-green-600/20">
+                      <FaCheck className="text-3xl sm:text-4xl text-green-500" />
                     </div>
-                    <h3 className="mb-2 text-2xl font-medium text-white">
+                    <h3 className="mb-2 text-xl sm:text-2xl font-medium text-white">
                       Message Sent Successfully!
                     </h3>
-                    <p className="text-neutral-400">
+                    <p className="text-sm sm:text-base text-neutral-400">
                       Thank you for your message. I'll get back to you as soon
                       as possible.
                     </p>
                     <button
                       onClick={() => setSubmitSuccess(false)}
-                      className="mt-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-white"
+                      className="mt-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
                     >
                       Send Another Message
                     </button>
                   </div>
                 ) : (
                   <>
-                    <h3 className="mb-6 text-2xl font-medium text-white">
+                    <h3 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-medium text-white">
                       Send Me a Message
                     </h3>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                         <div>
                           <label
                             htmlFor="name"
@@ -300,11 +304,11 @@ function Contact() {
                               formErrors.name
                                 ? "border-red-500"
                                 : "border-neutral-700"
-                            } bg-neutral-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500`}
+                            } bg-neutral-800/50 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                             placeholder="John Doe"
                           />
                           {formErrors.name && (
-                            <p className="mt-1 text-sm text-red-500">
+                            <p className="mt-1 text-xs sm:text-sm text-red-500">
                               {formErrors.name}
                             </p>
                           )}
@@ -327,11 +331,11 @@ function Contact() {
                               formErrors.email
                                 ? "border-red-500"
                                 : "border-neutral-700"
-                            } bg-neutral-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500`}
+                            } bg-neutral-800/50 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                             placeholder="john@example.com"
                           />
                           {formErrors.email && (
-                            <p className="mt-1 text-sm text-red-500">
+                            <p className="mt-1 text-xs sm:text-sm text-red-500">
                               {formErrors.email}
                             </p>
                           )}
@@ -355,11 +359,11 @@ function Contact() {
                             formErrors.subject
                               ? "border-red-500"
                               : "border-neutral-700"
-                          } bg-neutral-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500`}
+                          } bg-neutral-800/50 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                           placeholder="How can I help you?"
                         />
                         {formErrors.subject && (
-                          <p className="mt-1 text-sm text-red-500">
+                          <p className="mt-1 text-xs sm:text-sm text-red-500">
                             {formErrors.subject}
                           </p>
                         )}
@@ -377,16 +381,16 @@ function Contact() {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          rows="6"
+                          rows="4"
                           className={`w-full rounded-lg border ${
                             formErrors.message
                               ? "border-red-500"
                               : "border-neutral-700"
-                          } bg-neutral-800/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500`}
+                          } bg-neutral-800/50 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300 resize-none`}
                           placeholder="Tell me about your project..."
                         ></textarea>
                         {formErrors.message && (
-                          <p className="mt-1 text-sm text-red-500">
+                          <p className="mt-1 text-xs sm:text-sm text-red-500">
                             {formErrors.message}
                           </p>
                         )}
@@ -396,14 +400,14 @@ function Contact() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white"
+                          className="group relative inline-flex w-full sm:w-auto items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white"
                         >
                           <span className="absolute h-full w-full bg-gradient-to-r from-cyan-500 to-blue-500"></span>
-                          <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-8 py-3 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+                          <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 sm:py-3 text-sm sm:text-base transition-all duration-300 ease-out group-hover:bg-opacity-0">
                             {isSubmitting ? (
                               <>
                                 <svg
-                                  className="mr-2 h-5 w-5 animate-spin text-white"
+                                  className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin text-white"
                                   xmlns="http://www.w3.org/2000/svg"
                                   fill="none"
                                   viewBox="0 0 24 24"
@@ -426,7 +430,7 @@ function Contact() {
                               </>
                             ) : (
                               <>
-                                <FaPaperPlane className="mr-2" /> Send Message
+                                <FaPaperPlane className="mr-2 h-4 w-4 sm:h-5 sm:w-5" /> Send Message
                               </>
                             )}
                           </span>
