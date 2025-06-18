@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Main homepage -->
+  <url>
+    <loc>https://sanagh7.github.io/</loc>
+    <lastmod>2023-11-14T10:00:00+05:45</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- These URLs reference sections in your SPA via hash - important for SEO -->
+  <url>
+    <loc>https://sanagh7.github.io/#about</loc>
+    <lastmod>2023-11-14T10:00:00+05:45</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://sanagh7.github.io/#projects</loc>
+    <lastmod>2023-11-14T10:00:00+05:45</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sanagh7.github.io/#skills</loc>
+    <lastmod>2023-11-14T10:00:00+05:45</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://sanagh7.github.io/#contact</loc>
+    <lastmod>2023-11-14T10:00:00+05:45</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset> 

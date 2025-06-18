@@ -44,34 +44,25 @@ function App() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden text-neutral-300 antialised selection:bg-cyan-300 selection:text-cyan-900">
-      {/* Background */}
-      <div className="fixed top-0 -z-10 h-full w-full">
-        <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#050816]"></div>
-        <div className="absolute inset-0 z-[-1] bg-[linear-gradient(to_right,#080325_1px,transparent_1px),linear-gradient(to_bottom,#080325_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-
-        {/* Animated gradient orbs */}
-        <div className="absolute left-[10%] top-[20%] z-[-1] h-96 w-96 animate-pulse rounded-full bg-cyan-950/30 blur-[120px]"></div>
-        <div className="absolute right-[15%] top-[40%] z-[-1] h-72 w-72 animate-pulse rounded-full bg-indigo-900/20 blur-[120px] delay-700"></div>
-        <div className="absolute bottom-[10%] left-[35%] z-[-1] h-80 w-80 animate-pulse rounded-full bg-purple-900/20 blur-[120px] delay-1000"></div>
-      </div>
-
-      {/* Custom cursor glow effect */}
-      <div
-        className="pointer-events-none fixed z-50 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300"
-        style={{
-          left: `${mousePosition.x}px`,
-          top: `${mousePosition.y}px`,
-          opacity: isVisible ? 1 : 0,
-        }}
-      >
-        <div className="h-[300px] w-[300px] rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-transparent blur-3xl"></div>
-      </div>
+    <div className="relative min-h-screen bg-[#060921] text-white">
+      {/* Custom cursor */}
+      {isVisible && (
+        <div
+          className="fixed w-8 h-8 pointer-events-none z-50 mix-blend-difference"
+          style={{
+            left: mousePosition.x - 16,
+            top: mousePosition.y - 16,
+          }}
+        >
+          <div className="w-full h-full rounded-full bg-white opacity-50 animate-ping" />
+          <div className="absolute inset-0 w-4 h-4 m-auto rounded-full bg-white" />
+        </div>
+      )}
 
       <div className="mx-auto min-h-screen">
+        <Navbar />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Navbar />
-          <section id="home">
+          <section id="home" className="pt-16 md:pt-0">
             <Hero />
           </section>
           <section id="about">

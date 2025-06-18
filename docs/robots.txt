@@ -1,0 +1,9 @@
+# Allow all robots to crawl all content
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sanagh7.github.io/sitemap.xml
+
+# Rate limiting for crawlers
+Crawl-delay: 10 
