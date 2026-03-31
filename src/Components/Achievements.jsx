@@ -12,9 +12,9 @@ const Achievements = () => {
   };
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-24">
+    <div className="relative border-b border-neutral-800/50 py-24 overflow-hidden bg-[#060921]">
       {/* Background effect */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 bg-[#060921]">
         <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
         <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
       </div>

@@ -12,7 +12,7 @@ export const CONTACT = {
 };
 
 export const ABOUT_TEXT =
-  "I'm a passionate full-stack developer with over 3 years of experience building modern web applications. My expertise includes React, Node.js, and cloud architecture. I focus on creating clean, efficient, and user-friendly solutions that solve real-world problems. My background in computer science combined with a keen eye for design allows me to bridge the gap between functionality and aesthetics. When I'm not coding, you'll find me hiking in the mountains or exploring new technologies.";
+  "I am a backend-focused developer specializing in building scalable APIs, system architectures, and data-driven applications. I have experience developing production-level systems including ERP platforms and learning applications, with a strong focus on performance and maintainability.\n\nI primarily work with Node.js, Express, NestJS, and PostgreSQL, and have hands-on experience in database design, API development, and backend optimization.\n\nIn addition to backend engineering, I am exploring AI and research-oriented development, focusing on integrating machine learning into practical, real-world systems.";
 
 export const EDUCATION = [
   {
@@ -26,9 +26,93 @@ export const EDUCATION = [
   },
 ];
 
+export const EXPERIENCES = [
+  {
+    period: "Feb 2025 – Feb 2026",
+    role: "Backend Lead (Full Stack Responsibilities)",
+    company: "Timber5D Solutions",
+    description:
+      "Led backend development for a full-scale ERP system for a manufacturing company. Designed and implemented scalable REST APIs using Node.js and Express. Architected and optimized PostgreSQL database using Prisma ORM.",
+    responsibilities: [
+      "Led backend development for a full-scale ERP system for a manufacturing company",
+      "Designed and implemented scalable REST APIs using Node.js and Express",
+      "Architected and optimized PostgreSQL database using Prisma ORM",
+      "Developed core modules including inventory, workflow automation, and operations management",
+      "Contributed to frontend development using Next.js and Tailwind CSS",
+    ],
+    technologies: ["Node.js", "Express", "PostgreSQL", "Prisma", "Next.js", "Tailwind CSS"],
+    highlights: "Enterprise system deployed for real-world manufacturing workflow",
+  },
+  {
+    period: "Mar 2024 – Dec 2024",
+    role: "Full Stack Developer Intern",
+    company: "Elivate.info",
+    description:
+      "Built an online learning platform for +2 students preparing for IOE and MBBS entrance exams. Developed features for notes management and MCQ-based practice system.",
+    responsibilities: [
+      "Built an online learning platform for +2 students preparing for IOE and MBBS entrance exams",
+      "Developed features for notes management and MCQ-based practice system",
+      "Designed backend APIs and services using Node.js and Express",
+      "Integrated responsive frontend using Next.js and Tailwind CSS",
+      "Worked in a fast-paced startup environment, contributing across the full stack",
+    ],
+    technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Prisma"],
+    highlights: "Learning platform serving students for competitive exam preparation",
+  },
+  {
+    period: "Sep 2023 – Jan 2024",
+    role: "Backend / Full Stack Developer",
+    company: "Raica Boys Hostel",
+    description:
+      "Developed a hostel ERP and booking system for managing student accommodations. Designed backend APIs for booking, room allocation, and user management.",
+    responsibilities: [
+      "Developed a hostel ERP and booking system for managing student accommodations",
+      "Designed backend APIs for booking, room allocation, and user management",
+      "Implemented database schema using PostgreSQL and Prisma ORM",
+      "Built a responsive frontend interface for admins and users",
+    ],
+    technologies: ["Node.js", "Express", "PostgreSQL", "Prisma", "Next.js", "Tailwind CSS"],
+    highlights: "Live system deployed for client use",
+  },
+];
+
 export const PROJECTS = [
   {
+    title: "ERP System – Timber5D Solutions",
+    category: "Real-World / Client Projects",
+    description:
+      "Feb 2025 – Feb 2026 | Role: Backend Lead / Full Stack Developer\n\n• Led backend architecture for a multi-tenant ERP system serving multiple companies\n• Designed and implemented scalable REST APIs handling 10k+ requests per day using Node.js & Express\n• Implemented Role-Based Access Control (RBAC) and Policy-Based Access Control (PBAC) to secure sensitive company data\n• Developed subscription-based modules allowing companies to use features based on their plan\n• Built pipelines for leads → follow-ups → customers, inventory management → production schedule → order & dispatch, and other core operations\n• Automated manual operations: raw leads converted automatically after remarks, multi-step workflows streamlined across departments\n• Integrated complex inventory management, production scheduling, and order-dispatch management pipelines\n• Optimized PostgreSQL database for performance, scalability, and multi-tenant support\n• Contributed to frontend dashboards using Next.js and Tailwind CSS for admin and user interfaces\n\nKey Impact:\n• Reduced manual follow-up time by 70%\n• Increased order fulfillment efficiency by 50%\n• Supported 5+ companies simultaneously on multi-tenant platform",
+    technologies: ["Node.js", "Express", "PostgreSQL", "Prisma", "Next.js", "Tailwind CSS"],
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+    github: "",
+    demo: "https://timber5dsolutions.com",
+  },
+  {
+    title: "Learning Platform – Elivate.info",
+    category: "Real-World / Client Projects",
+    description:
+      "Mar 2024 – Dec 2024 | Role: Full Stack Developer Intern\n\n• Built an online platform for +2 students preparing for IOE and MBBS exams\n• Developed notes management and MCQ-based practice features\n• Designed backend APIs using Node.js & Express\n• Built responsive frontend using Next.js and Tailwind CSS\n• Worked in a fast-paced startup environment contributing across the full stack",
+    technologies: ["Node.js", "Express", "PostgreSQL", "Prisma", "Next.js", "Tailwind CSS"],
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop",
+    github: "",
+    demo: "",
+  },
+  {
+    title: "Hostel ERP & Booking System – Raica Boys Hostel",
+    category: "Real-World / Client Projects",
+    description:
+      "Sep 2023 – Jan 2024 | Role: Backend / Full Stack Developer\n\n• Developed hostel ERP and booking system to manage student accommodations\n• Built backend APIs for booking, room allocation, and user management\n• Designed and optimized database schema using PostgreSQL and Prisma ORM\n• Created responsive frontend interface for admins and users\n• Deployed live system for client use",
+    technologies: ["Node.js", "Express", "PostgreSQL", "Prisma", "Next.js", "Tailwind CSS"],
+    image:
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=250&fit=crop",
+    github: "",
+    demo: "https://raicaboyshostel.com.np",
+  },
+  {
     title: "Website Penetration Testing System",
+    category: "College / Academic Projects",
     description:
       "A comprehensive security tool that automates vulnerability scanning for websites, detecting OWASP Top 10 vulnerabilities, SQL injections, and XSS attacks with detailed reports and remediation suggestions.",
     technologies: [
@@ -48,7 +132,19 @@ export const PROJECTS = [
     demo: "https://pentest.sanandanghimire.com",
   },
   {
+    title: "Billing & Inventory Management System",
+    category: "Self-Oriented / Personal / R&D Projects",
+    description:
+      "Jan 2024 – Mar 2024 | Role: Full Stack Developer\n\n• Developed a full-featured Billing & Inventory Management System with POS and reporting modules\n• Implemented real-time inventory updates synchronized with POS transactions for accurate stock tracking\n• Designed backend with NestJS + GraphQL for flexible queries and modular architecture\n• Built PostgreSQL database with Prisma ORM for products, inventory, sales, and users\n• Implemented role-based access control (Admin / Cashier) for secure operations\n• Generated dynamic sales and inventory reports to assist business decisions\n• Frontend developed with React + Vite + Tailwind CSS, providing responsive dashboards\n• Backend optimized for performance and scalability, supporting multiple concurrent POS sessions\n\nImpact / Metrics:\n• Processed 100+ daily transactions with real-time inventory updates\n• Reduced manual billing errors by 80%\n• Reports generated in seconds, improving operational efficiency\n• System ready for future AI/ML integration for sales forecasting or stock predictions",
+    technologies: ["React", "Vite", "Tailwind CSS", "NestJS", "GraphQL", "PostgreSQL", "Prisma"],
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+    github: "",
+    demo: "",
+  },
+  {
     title: "E-commerce Platform",
+    category: "Self-Oriented / Personal / R&D Projects",
     description:
       "A full-stack e-commerce solution with real-time inventory management, payment processing, and user authentication.",
     technologies: ["React", "Node.js", "MongoDB", "Stripe API", "AWS"],
@@ -59,6 +155,7 @@ export const PROJECTS = [
   },
   {
     title: "Task Management System",
+    category: "Self-Oriented / Personal / R&D Projects",
     description:
       "A collaborative project management tool with Kanban boards, task assignments, and progress tracking.",
     technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io", "Docker"],
@@ -107,8 +204,11 @@ export const TESTIMONIALS = [
   // },
 ];
 
-export const HERO_CONTENT =
-  "I'm a versatile Full-Stack Developer with 2+ years of experience specializing in React, Node.js, and cybersecurity. Passionate about creating elegant solutions to complex problems, I focus on building secure, scalable, and user-friendly web applications that deliver exceptional experiences. My expertise spans from responsive front-end interfaces to robust back-end systems and secure infrastructure.";
+export const HERO_CONTENT = {
+  mainHeading: "Backend Engineer | AI & R&D Enthusiast",
+  subheading: "Building scalable backend systems and intelligent, data-driven applications",
+  description: "I design and build scalable backend systems and production-ready applications. From ERP platforms to learning systems, I focus on performance, clean architecture, and real-world impact—while actively exploring AI and research-driven solutions.",
+};
 
 export const SKILLS = [
   {

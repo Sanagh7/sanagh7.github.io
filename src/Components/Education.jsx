@@ -9,10 +9,10 @@ import {
 
 const Education = () => {
   return (
-    <div className="relative border-b border-neutral-800/50 pb-20 pt-20">
+    <div className="relative border-b border-neutral-800/50 pb-20 pt-20 overflow-hidden bg-[#060921]">
       {/* Decorative elements */}
-      <div className="absolute -left-64 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-500/5 to-cyan-500/5 blur-3xl"></div>
-      <div className="absolute -right-64 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-indigo-500/5 to-purple-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-500/5 to-cyan-500/5 blur-3xl"></div>
+      <div className="absolute -right-32 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-indigo-500/5 to-purple-500/5 blur-3xl"></div>
 
       <div className="container mx-auto">
         <motion.div

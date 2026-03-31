@@ -12,12 +12,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-12 bg-[#060921] py-16">
+    <footer className="relative mt-0 bg-[#060921] py-16 overflow-x-hidden w-screen">
       {/* Decorative Elements */}
       <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500"></div>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#080325_1px,transparent_1px),linear-gradient(to_bottom,#080325_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 -z-10 bg-[#060921] bg-[linear-gradient(to_right,#080325_1px,transparent_1px),linear-gradient(to_bottom,#080325_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl overflow-x-hidden">
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-4">
           {/* About Column */}
           <div className="md:col-span-1 lg:col-span-2">

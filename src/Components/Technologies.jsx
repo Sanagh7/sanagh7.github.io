@@ -130,9 +130,9 @@ const Technologies = () => {
   }, [activeCategory, hoveredTech]);
 
   return (
-    <div className="relative border-b border-neutral-800 pb-24">
+    <div className="relative border-b border-neutral-800 pb-24 overflow-hidden bg-[#060921]">
       {/* Background effect */}
-      <div className="absolute left-0 right-0 top-0 h-full w-full overflow-hidden -z-10">
+      <div className="absolute left-0 right-0 top-0 h-full w-full overflow-hidden -z-10 bg-[#060921]">
         <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-cyan-900/20 blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-blue-900/20 blur-3xl"></div>
       </div>

@@ -1,109 +1,165 @@
 // src/components/Projects.js
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { PROJECTS } from "../constants";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaBriefcase, FaGraduationCap, FaLightbulb } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
-const ProjectCard = ({ project, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const ProjectItem = ({ project, index }) => {
+  const isEven = index % 2 === 0;
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Truncate description if it's longer than 150 characters
+  const shouldTruncate = project.description.length > 150;
+  const displayDescription = !isExpanded && shouldTruncate 
+    ? project.description.slice(0, 150) + "..." 
+    : project.description;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 hover:border-cyan-500/30 transition-all duration-500 shadow-xl"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative group"
     >
-      {/* Project Image */}
-      <div className="relative aspect-video overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/70 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-        
-        {/* Project Links Overlay */}
-        <div 
-          className={`absolute inset-0 flex items-center justify-center gap-5 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
-        >
-          <motion.a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900/80 text-white backdrop-blur-sm transition-all hover:bg-cyan-500"
-            aria-label="View on GitHub"
+      {/* Project Container */}
+      <div className={`flex flex-col lg:flex-row gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+        {/* Image Section */}
+        <div className="w-full lg:w-1/2">
+          <div className="relative overflow-hidden rounded-xl shadow-2xl">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-64 sm:h-80 object-cover transform transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-transparent"></div>
+            
+            {/* Decorative overlay */}
+            <div className="absolute inset-0 border-2 border-cyan-500/0 group-hover:border-cyan-500/30 transition-all duration-500 rounded-xl"></div>
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="w-full lg:w-1/2 space-y-4">
+          {/* Title */}
+          <motion.h3
+            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-2xl sm:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300"
           >
-            <FaGithub className="text-xl" />
-          </motion.a>
-          <motion.a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white transition-all"
-            aria-label="View Live Demo"
+            {project.title}
+          </motion.h3>
+
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="relative bg-neutral-900/50 backdrop-blur-sm rounded-lg p-5 border border-neutral-800 group-hover:border-neutral-700 transition-colors duration-300"
           >
-            <FaExternalLinkAlt className="text-lg" />
-          </motion.a>
+            <p className="text-neutral-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+              {displayDescription}
+            </p>
+            {shouldTruncate && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="mt-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors duration-200 flex items-center gap-1"
+              >
+                {isExpanded ? 'Read Less' : 'Read More'}
+                <span className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
+                  ↓
+                </span>
+              </button>
+            )}
+          </motion.div>
+
+          {/* Technologies */}
+          <motion.div
+            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-wrap gap-2"
+          >
+            {project.technologies.map((tech, techIndex) => (
+              <span
+                key={techIndex}
+                className="text-xs sm:text-sm text-cyan-400 font-mono px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20"
+              >
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Links */}
+          <motion.div
+            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex gap-4 pt-2"
+          >
+            {project.github && (
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800/80 hover:bg-neutral-700 border border-neutral-700 hover:border-cyan-500/50 text-neutral-300 hover:text-white transition-all duration-300"
+              >
+                <FaGithub className="text-lg" />
+                <span className="text-sm font-medium">Code</span>
+              </motion.a>
+            )}
+            {project.demo && (
+              <motion.a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white transition-all duration-300 shadow-lg shadow-cyan-500/20"
+              >
+                <FaExternalLinkAlt className="text-sm" />
+                <span className="text-sm font-medium">Live Demo</span>
+              </motion.a>
+            )}
+          </motion.div>
         </div>
       </div>
-
-      {/* Project Info */}
-      <div className="p-6">
-        <h3 className="mb-2 text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">
-          {project.title}
-        </h3>
-        <p className="mb-4 text-sm leading-relaxed text-neutral-400">
-          {project.description}
-        </p>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, 5).map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="rounded-full bg-neutral-800/80 px-3 py-1 text-xs text-neutral-300 transition-colors duration-300 group-hover:bg-cyan-900/30 group-hover:text-cyan-300"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 5 && (
-            <span className="rounded-full bg-neutral-800/80 px-3 py-1 text-xs text-neutral-300">
-              +{project.technologies.length - 5} more
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Decorative gradient corner effect */}
-      <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 blur-2xl transition-opacity duration-500 opacity-0 group-hover:opacity-100"></div>
     </motion.div>
   );
 };
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  
-  // You could add categories if there are more projects later
-  const categories = ["All", "Web", "Mobile", "Design"];
-  
-  const filteredProjects = activeCategory === "All" 
-    ? PROJECTS 
-    : PROJECTS.filter(project => project.category === activeCategory);
+  const [activeCategory, setActiveCategory] = useState("Real-World / Client Projects");
+
+  const categories = [
+    {
+      name: "Real-World / Client Projects",
+      icon: <FaBriefcase className="text-lg" />,
+      gradient: "from-cyan-500 to-blue-500"
+    },
+    {
+      name: "College / Academic Projects",
+      icon: <FaGraduationCap className="text-lg" />,
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      name: "Self-Oriented / Personal / R&D Projects",
+      icon: <FaLightbulb className="text-lg" />,
+      gradient: "from-orange-500 to-yellow-500"
+    }
+  ];
+
+  const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-16 sm:py-24">
+    <div className="relative border-b border-neutral-800/50 py-16 sm:py-24 overflow-hidden bg-[#060921]">
       {/* Background Effects */}
-      <div className="absolute left-0 top-1/4 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-0 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/4 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-32 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -115,39 +171,74 @@ const Projects = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            My <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Projects</span>
+            Featured <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Projects</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-neutral-400 max-w-2xl mx-auto">
-            Here are some of my recent projects. Each one is a unique challenge
-            that I've tackled with modern technologies and best practices.
+            Production-ready systems and applications I've built, focusing on backend architecture, scalability, and real-world impact.
           </p>
-
-          {/* Project filter - can be enabled if you have enough projects to categorize */}
-          {/*
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-                    : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          */}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {PROJECTS.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+        {/* Category Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 sm:mb-16"
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category.name}
+              onClick={() => setActiveCategory(category.name)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`group relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
+                activeCategory === category.name
+                  ? 'text-white shadow-lg'
+                  : 'text-neutral-400 hover:text-white bg-neutral-800/50 hover:bg-neutral-800'
+              }`}
+            >
+              {activeCategory === category.name && (
+                <motion.span
+                  layoutId="activeTab"
+                  className={`absolute inset-0 bg-gradient-to-r ${category.gradient} rounded-full -z-10`}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className={activeCategory === category.name ? 'relative z-10' : ''}>
+                {category.icon}
+              </span>
+              <span className={`hidden sm:inline ${activeCategory === category.name ? 'relative z-10' : ''}`}>
+                {category.name}
+              </span>
+              <span className={`sm:hidden ${activeCategory === category.name ? 'relative z-10' : ''}`}>
+                {category.name.split(' / ')[0]}
+              </span>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Projects List */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-16 sm:space-y-20"
+          >
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project, index) => (
+                <ProjectItem key={project.title} project={project} index={index} />
+              ))
+            ) : (
+              <div className="text-center py-20">
+                <p className="text-neutral-400 text-lg">No projects in this category yet.</p>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
         
         {/* View More Projects Button */}
         <motion.div 
@@ -155,7 +246,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 sm:mt-16 flex justify-center"
+          className="mt-16 sm:mt-20 flex justify-center"
         >
           <motion.a
             href="https://github.com/sanagh7"

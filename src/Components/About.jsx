@@ -44,10 +44,10 @@ const experienceCards = [
 
 const About = () => {
   return (
-    <div className="relative border-b border-neutral-800/50 pb-24 pt-20">
+    <div className="relative border-b border-neutral-800/50 pb-24 pt-20 overflow-hidden bg-[#060921]">
       {/* Enhanced background elements */}
-      <div className="absolute -right-64 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "8s" }}></div>
-      <div className="absolute -left-64 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl animate-pulse" style={{ animationDuration: "10s", animationDelay: "2s" }}></div>
+      <div className="absolute -right-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "8s" }}></div>
+      <div className="absolute -left-32 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl animate-pulse" style={{ animationDuration: "10s", animationDelay: "2s" }}></div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -145,9 +145,6 @@ const About = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="mb-3 text-xl sm:text-2xl font-semibold text-white">
-                  My Journey
-                </h3>
                 <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
                   {ABOUT_TEXT}
                 </p>
@@ -159,13 +156,8 @@ const About = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="mb-3 text-xl sm:text-2xl font-semibold text-white">
-                  My Philosophy
-                </h3>
                 <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
-                  I believe in creating solutions that are not only functional but also intuitive and enjoyable to use. 
-                  My approach combines technical expertise with creative thinking to solve complex problems and deliver 
-                  exceptional user experiences.
+                  I aim to work on backend systems and AI-driven solutions that solve real-world problems at scale.
                 </p>
               </motion.div>
 
@@ -206,7 +198,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Experience Cards Grid */}
+        {/* Quick Info Section */}
         <div className="mt-10">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -215,30 +207,27 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center text-2xl sm:text-3xl font-semibold text-white mb-10"
           >
-            What I <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Do</span>
+            Quick <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Info</span>
           </motion.h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {experienceCards.map((card, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
+              "Backend-Focused Developer",
+              "2+ Years Practical Experience",
+              "Built ERP & Learning Platforms",
+              "Interested in AI & R&D"
+            ].map((info, index) => (
               <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-xl p-6 shadow-xl group"
+                className="flex items-center gap-4 bg-gradient-to-br from-neutral-900/50 to-neutral-800/50 border border-neutral-800 rounded-xl p-5 group hover:border-cyan-500/50 transition-all duration-300"
               >
-                <div className="mb-4">
-                  <div className={`inline-flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-r ${card.color} text-white text-xl`}>
-                    {card.icon}
-                  </div>
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-                  {card.title}
-                </h4>
-                <p className="text-sm text-neutral-400">
-                  {card.description}
+                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50 transition-all duration-300"></div>
+                <p className="text-base sm:text-lg text-neutral-300 group-hover:text-white transition-colors duration-300">
+                  {info}
                 </p>
               </motion.div>
             ))}

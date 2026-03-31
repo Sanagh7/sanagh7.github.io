@@ -12,6 +12,7 @@ const NavBar = () => {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "education", label: "Education" },
+    { id: "experience", label: "Experience" },
     { id: "skills", label: "Skills" },
     { id: "achievements", label: "Achievements" },
     { id: "projects", label: "Projects" },
@@ -100,13 +101,13 @@ const NavBar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-screen transition-all duration-300 overflow-x-hidden ${
         isScrolled || mobileMenuOpen
           ? "bg-neutral-900/95 py-3 backdrop-blur-md shadow-lg shadow-neutral-900/20"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-7xl overflow-x-hidden">
         {/* Logo and Mobile Menu Button */}
         <div className="flex w-full md:w-auto items-center justify-between">
           <motion.a

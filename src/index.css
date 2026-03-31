@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset and prevent overflow */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #060921;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  background-color: #060921;
+}
+
+/* Ensure all sections don't cause overflow */
+section {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Container constraints */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Animated gradient background for buttons */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
 /* Simplified social icon styles */
 .social-icon-container {
   display: flex;

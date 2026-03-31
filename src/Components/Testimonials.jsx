@@ -33,10 +33,10 @@ const Testimonials = () => {
   }, [activeIndex, isAnimating]);
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-24">
+    <div className="relative border-b border-neutral-800/50 py-24 overflow-hidden bg-[#060921]">
       {/* Decorative elements */}
-      <div className="absolute left-0 top-1/4 -z-10 h-72 w-72 rounded-full bg-cyan-900/5 blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-0 -z-10 h-72 w-72 rounded-full bg-purple-900/5 blur-3xl"></div>
+      <div className="absolute -left-16 top-1/4 -z-10 h-72 w-72 rounded-full bg-cyan-900/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-16 -z-10 h-72 w-72 rounded-full bg-purple-900/5 blur-3xl"></div>
 
       {/* Floating animal elements */}
       <motion.div
