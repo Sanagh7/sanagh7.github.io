@@ -190,12 +190,12 @@ export const TESTIMONIALS = [
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
   },
-  // {
-  //   text: "Sanandan's technical skills are matched only by his excellent communication abilities. He consistently delivered high-quality code and was always willing to explain complex concepts to the team.",
-  //   name: "Shusbin Tripathi",
-  //   position: "Web Developer",
-  //   image: "",
-  // },
+  {
+    text: "Sanandan's technical skills are matched only by his excellent communication abilities. He consistently delivered high-quality code and was always willing to explain complex concepts to the team.",
+    name: "Shusbin Tripathi",
+    position: "Web Developer",
+    image: "",
+  },
   // {
   //   text: "I was impressed by Sanandan's ability to quickly understand our requirements and implement solutions that exceeded our expectations. His work ethic and dedication to quality are outstanding.",
   //   name: "Abishek Shrestha",
