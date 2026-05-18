@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { EDUCATION } from "../constants";
 import {
   FaGraduationCap,
@@ -11,9 +9,9 @@ import {
 
 const Education = () => {
   return (
-    <div className="relative border-b border-neutral-800/50 pb-20 pt-20 overflow-hidden bg-[#060921]">
+    <div className="relative border-b border-neutral-800 pb-20 pt-20 overflow-hidden bg-[#060921]">
       {/* Decorative elements */}
-      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-blue-500/5 to-cyan-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-cyan-500/5 blur-3xl"></div>
       <div className="absolute -right-32 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-indigo-500/5 to-purple-500/5 blur-3xl"></div>
 
       <div className="container mx-auto">
@@ -44,7 +42,7 @@ const Education = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="mb-10 overflow-hidden rounded-xl bg-neutral-800/20 backdrop-blur-sm transition-all duration-300 hover:bg-neutral-800/30"
+              className="mb-10 overflow-hidden rounded-xl bg-neutral-900/80 backdrop-blur-sm transition-all duration-300 hover:bg-neutral-900/80"
             >
               <div className="flex flex-col md:flex-row">
                 {/* Left side - Logo */}
@@ -119,7 +117,7 @@ const Education = () => {
               className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white"
             >
               <span className="absolute h-full w-full bg-gradient-to-r from-cyan-500 to-blue-500"></span>
-              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[#080325] px-6 py-2.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
                 <FaGraduationCap className="mr-2" /> View Full Credentials
               </span>
             </a>

@@ -2,7 +2,7 @@
 
 // src/components/Contact.js
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { CONTACT } from "../constants";
 import {
   FaGithub,
@@ -88,8 +88,8 @@ function Contact() {
   return (
     <div className="relative py-24 sm:py-32 overflow-hidden bg-[#060921]">
       {/* Enhanced background elements */}
-      <div className="absolute -left-32 top-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-cyan-500/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-cyan-500/5 blur-3xl"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -135,7 +135,7 @@ function Contact() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 shadow-xl border border-neutral-800/50 backdrop-blur-sm h-full">
+              <div className="rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-900 p-8 shadow-xl border border-neutral-800 backdrop-blur-sm h-full">
                 <motion.h3
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -188,7 +188,7 @@ function Contact() {
                     }}
                     className="flex items-start gap-5"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/20">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-lg shadow-purple-500/20">
                       <MdLocationOn size={24} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -208,7 +208,7 @@ function Contact() {
                     }}
                     className="flex items-start gap-5"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/20">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20">
                       <MdPhone size={24} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -242,7 +242,7 @@ function Contact() {
                       href={CONTACT.socialLinks.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900 text-neutral-400 transition-all duration-300"
                       whileHover={{ 
                         y: -5, 
                         backgroundColor: "#2b3137", 
@@ -257,7 +257,7 @@ function Contact() {
                       href={CONTACT.socialLinks.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-neutral-400 transition-all duration-300"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900 text-neutral-400 transition-all duration-300"
                       whileHover={{ 
                         y: -5, 
                         backgroundColor: "#0077b5", 
@@ -281,7 +281,7 @@ function Contact() {
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
             >
-              <div className="relative rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 shadow-xl border border-neutral-800/50 backdrop-blur-sm overflow-hidden">
+              <div className="relative rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-900 p-8 shadow-xl border border-neutral-800 backdrop-blur-sm overflow-hidden">
                 {submitSuccess ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -343,7 +343,7 @@ function Contact() {
                               formErrors.name
                                 ? "border-red-500"
                                 : "border-neutral-700"
-                            } bg-neutral-800/50 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
+                            } bg-neutral-900/80 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                             placeholder="John Doe"
                           />
                           {formErrors.name && (
@@ -370,7 +370,7 @@ function Contact() {
                               formErrors.email
                                 ? "border-red-500"
                                 : "border-neutral-700"
-                            } bg-neutral-800/50 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
+                            } bg-neutral-900/80 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                             placeholder="john@example.com"
                           />
                           {formErrors.email && (
@@ -398,7 +398,7 @@ function Contact() {
                             formErrors.subject
                               ? "border-red-500"
                               : "border-neutral-700"
-                          } bg-neutral-800/50 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
+                          } bg-neutral-900/80 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300`}
                           placeholder="How can I help you?"
                         />
                         {formErrors.subject && (
@@ -425,7 +425,7 @@ function Contact() {
                             formErrors.message
                               ? "border-red-500"
                               : "border-neutral-700"
-                          } bg-neutral-800/50 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300 resize-none`}
+                          } bg-neutral-900/80 px-4 py-3 text-base text-white placeholder-neutral-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all duration-300 resize-none`}
                           placeholder="Tell me about your project..."
                         ></textarea>
                         {formErrors.message && (
@@ -445,7 +445,7 @@ function Contact() {
                           className="group relative inline-flex w-full sm:w-auto items-center justify-center overflow-hidden rounded-full p-0.5 font-medium text-white"
                         >
                           <span className="absolute h-full w-full bg-gradient-to-r from-cyan-500 to-blue-500"></span>
-                          <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-8 py-3 text-base transition-all duration-300 ease-out group-hover:bg-opacity-0">
+                          <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[#080325] px-8 py-3 text-base transition-all duration-300 ease-out group-hover:bg-opacity-0">
                             {isSubmitting ? (
                               <>
                                 <svg
@@ -484,7 +484,7 @@ function Contact() {
 
                 {/* Decorative Gradients */}
                 <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-20 blur-2xl"></div>
-                <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-10 blur-2xl"></div>
+                <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 opacity-10 blur-2xl"></div>
               </div>
             </motion.div>
           </div>

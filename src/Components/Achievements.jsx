@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { ACHIEVEMENTS } from "../constants";
 import { FaUsers, FaProjectDiagram, FaClock, FaCode } from "react-icons/fa";
 
@@ -14,11 +12,11 @@ const Achievements = () => {
   };
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-24 overflow-hidden bg-[#060921]">
+    <div className="relative border-b border-neutral-800 py-24 overflow-hidden bg-[#060921]">
       {/* Background effect */}
       <div className="absolute inset-0 -z-10 bg-[#060921]">
-        <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
-        <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
+        <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-cyan-500/5 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-cyan-500/5 blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4">
@@ -69,11 +67,11 @@ const Achievements = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
                 viewport={{ once: true, margin: "-50px" }}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50"
+                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-900/80"
               >
-                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-2xl transition-all duration-500 group-hover:from-cyan-500/20 group-hover:to-blue-500/20"></div>
+                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-cyan-500/10 blur-2xl transition-all duration-500 group-hover:from-cyan-500/20 group-hover:to-cyan-500/20"></div>
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-3 text-cyan-400">
+                  <div className="mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-500/20 p-3 text-cyan-400">
                     {statIcons[stat.label]}
                   </div>
                   <h3 className="mb-2 text-4xl font-bold text-white">

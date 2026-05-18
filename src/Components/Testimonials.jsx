@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { TESTIMONIALS } from "../constants";
 import { FaQuoteLeft, FaPaw, FaFeather, FaDove } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,7 +27,7 @@ const Testimonials = () => {
   }, [isAnimating]);
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-24 overflow-hidden bg-[#060921]">
+    <div className="relative border-b border-neutral-800 py-24 overflow-hidden bg-[#060921]">
       {/* Decorative elements */}
       <div className="absolute -left-16 top-1/4 -z-10 h-72 w-72 rounded-full bg-cyan-900/5 blur-3xl"></div>
       <div className="absolute bottom-1/4 -right-16 -z-10 h-72 w-72 rounded-full bg-purple-900/5 blur-3xl"></div>
@@ -39,7 +39,7 @@ const Testimonials = () => {
       <div className="absolute right-20 top-40 text-purple-500/20">
         <FaFeather className="h-6 w-6" />
       </div>
-      <div className="absolute left-1/4 bottom-20 text-blue-500/20">
+      <div className="absolute left-1/4 bottom-20 text-cyan-500/20">
         <FaDove className="h-7 w-7" />
       </div>
 
@@ -67,14 +67,14 @@ const Testimonials = () => {
         {/* Testimonial Carousel */}
         <div
           ref={containerRef}
-          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 shadow-xl transition-all duration-300 hover:shadow-cyan-900/20 sm:p-12"
+          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-900 p-8 shadow-xl transition-all duration-300 hover:shadow-cyan-900/20 sm:p-12"
         >
           <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 text-6xl text-cyan-500 opacity-10 sm:text-8xl">
             <FaQuoteLeft />
           </div>
 
           {/* Decorative accent */}
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500/5 to-blue-500/5"></div>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500/5 to-cyan-500/5"></div>
           <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
 
           <div className="relative z-10">
@@ -89,7 +89,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50"
+                className="group relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-900/80"
               >
                 {/* Animal paw print effect */}
                 <motion.div
@@ -101,7 +101,7 @@ const Testimonials = () => {
                   <FaPaw className="h-16 w-16" />
                 </motion.div>
 
-                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-2xl transition-all duration-500 group-hover:from-cyan-500/20 group-hover:to-blue-500/20"></div>
+                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-cyan-500/10 blur-2xl transition-all duration-500 group-hover:from-cyan-500/20 group-hover:to-cyan-500/20"></div>
                 <div className="relative z-10">
                   <div className="mb-4 flex items-center gap-4">
                     <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-neutral-800">

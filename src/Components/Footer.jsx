@@ -35,7 +35,7 @@ const Footer = () => {
                 href={CONTACT.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-cyan-500/10 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
                 aria-label="GitHub"
               >
                 <FaGithub size={18} />
@@ -44,7 +44,7 @@ const Footer = () => {
                 href={CONTACT.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-neutral-700 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/80 text-neutral-400 backdrop-blur-sm transition-all hover:-translate-y-1 hover:bg-cyan-500/10 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={18} />
@@ -131,7 +131,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="relative border-t border-neutral-800/50 pt-8">
+        <div className="relative border-t border-neutral-800 pt-8">
           {/* Footer Bottom */}
           <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-neutral-500 md:flex-row md:text-left">
             <div className="flex items-center">
@@ -153,7 +153,7 @@ const Footer = () => {
           </div>
 
           {/* Made with love */}
-          <div className="mt-6 text-center text-xs text-neutral-600">
+          <div className="mt-6 text-center text-xs text-neutral-500">
             Made with{" "}
             <FaHeart className="mx-1 inline-block text-red-500" />{" "}
             and modern web technologies

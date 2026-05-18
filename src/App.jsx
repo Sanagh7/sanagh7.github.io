@@ -1,15 +1,17 @@
 // src/App.js
+import dynamic from "next/dynamic";
 import About from "./Components/About";
-import Projects from "./Components/Projects";
-import Contact from "./Components/Contact";
-import Testimonials from "./Components/Testimonials";
 import Footer from "./Components/Footer";
 import Education from "./Components/Education";
 import Achievements from "./Components/Achievements";
-import Experience from "./Components/Experience";
 
 import Hero from "./Components/Hero";
-import Technologies from "./Components/Technologies";
+
+const Experience = dynamic(() => import("./Components/Experience"));
+const Technologies = dynamic(() => import("./Components/Technologies"));
+const Projects = dynamic(() => import("./Components/Projects"));
+const Testimonials = dynamic(() => import("./Components/Testimonials"));
+const Contact = dynamic(() => import("./Components/Contact"));
 
 function App() {
   return (

@@ -16,7 +16,9 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #060921;
+  background:
+    radial-gradient(circle at top left, rgba(6, 182, 212, 0.12), transparent 28rem),
+    linear-gradient(135deg, #060921 0%, #080325 48%, #060921 100%);
 }
 
 body {
@@ -29,7 +31,9 @@ body {
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
-  background-color: #060921;
+  background:
+    radial-gradient(circle at top left, rgba(6, 182, 212, 0.12), transparent 28rem),
+    linear-gradient(135deg, #060921 0%, #080325 48%, #060921 100%);
 }
 
 /* Ensure all sections don't cause overflow */

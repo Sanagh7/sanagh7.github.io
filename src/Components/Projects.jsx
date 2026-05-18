@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { PROJECTS } from "../constants";
 import { FaGithub, FaExternalLinkAlt, FaBriefcase, FaGraduationCap, FaLightbulb } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "../lib/motion";
 
 const ProjectItem = ({ project, index }) => {
   const isEven = index % 2 === 0;
@@ -35,7 +35,7 @@ const ProjectItem = ({ project, index }) => {
               className="w-full h-64 sm:h-80 object-cover transform transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-cyan-900/20 to-transparent"></div>
             
             {/* Decorative overlay */}
             <div className="absolute inset-0 border-2 border-cyan-500/0 group-hover:border-cyan-500/30 transition-all duration-500 rounded-xl"></div>
@@ -59,7 +59,7 @@ const ProjectItem = ({ project, index }) => {
             initial={{ opacity: 0, x: isEven ? -20 : 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative bg-neutral-900/50 backdrop-blur-sm rounded-lg p-5 border border-neutral-800 group-hover:border-neutral-700 transition-colors duration-300"
+            className="relative bg-neutral-900/80 backdrop-blur-sm rounded-lg p-5 border border-neutral-800 group-hover:border-neutral-700 transition-colors duration-300"
           >
             <p className="text-neutral-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
               {displayDescription}
@@ -108,7 +108,7 @@ const ProjectItem = ({ project, index }) => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800/80 hover:bg-neutral-700 border border-neutral-700 hover:border-cyan-500/50 text-neutral-300 hover:text-white transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-900/80 hover:bg-cyan-500/10 border border-neutral-700 hover:border-cyan-500/50 text-neutral-300 hover:text-white transition-all duration-300"
               >
                 <FaGithub className="text-lg" />
                 <span className="text-sm font-medium">Code</span>
@@ -146,7 +146,7 @@ const Projects = () => {
     {
       name: "College / Academic Projects",
       icon: <FaGraduationCap className="text-lg" />,
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-purple-500 to-cyan-500"
     },
     {
       name: "Self-Oriented / Personal / R&D Projects",
@@ -158,10 +158,10 @@ const Projects = () => {
   const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-16 sm:py-24 overflow-hidden bg-[#060921]">
+    <div className="relative border-b border-neutral-800 py-16 sm:py-24 overflow-hidden bg-[#060921]">
       {/* Background Effects */}
-      <div className="absolute -left-32 top-1/4 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/4 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/5 to-cyan-500/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-32 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/5 to-cyan-500/5 blur-3xl"></div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -197,7 +197,7 @@ const Projects = () => {
               className={`group relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
                 activeCategory === category.name
                   ? 'text-white shadow-lg'
-                  : 'text-neutral-400 hover:text-white bg-neutral-800/50 hover:bg-neutral-800'
+                  : 'text-neutral-400 hover:text-white bg-neutral-900/80 hover:bg-neutral-900'
               }`}
             >
               {activeCategory === category.name && (
@@ -259,7 +259,7 @@ const Projects = () => {
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-0.5 font-medium"
           >
             <span className="absolute h-full w-full bg-gradient-to-r from-purple-500 to-cyan-500"></span>
-            <span className="relative flex h-full w-full items-center justify-center rounded-full bg-neutral-900 px-6 py-3 text-sm sm:text-base transition-all duration-300 ease-out group-hover:bg-opacity-0 text-white">
+            <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[#080325] px-6 py-3 text-sm sm:text-base transition-all duration-300 ease-out group-hover:bg-opacity-0 text-white">
               View More on GitHub
               <FaGithub className="ml-2" />
             </span>

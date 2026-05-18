@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { EXPERIENCES } from "../constants";
 import {
   FaBriefcase,
@@ -15,10 +15,10 @@ const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative border-b border-neutral-800/50 py-20 overflow-hidden bg-[#060921]">
+    <div className="relative border-b border-neutral-800 py-20 overflow-hidden bg-[#060921]">
       {/* Background decorative elements */}
-      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
-      <div className="absolute -right-32 bottom-1/4 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-purple-500/5 to-cyan-500/5 blur-3xl"></div>
+      <div className="absolute -right-32 bottom-1/4 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-cyan-500/5 to-cyan-500/5 blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Header */}
@@ -50,7 +50,7 @@ const Experience = () => {
             className="relative"
           >
             {/* Timeline Line */}
-            <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/40 to-purple-500/20"></div>
+            <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500/20 via-cyan-500/40 to-purple-500/20"></div>
 
             {/* Timeline Items */}
             <div className="grid grid-cols-3 gap-8">
@@ -84,12 +84,12 @@ const Experience = () => {
                     onClick={() => setActiveIndex(index)}
                     className={`mt-20 cursor-pointer rounded-xl border transition-all duration-300 p-6 ${
                       activeIndex === index
-                        ? "border-cyan-500/50 bg-gradient-to-br from-neutral-900 to-neutral-800 shadow-xl shadow-cyan-500/10"
-                        : "border-neutral-800 bg-neutral-900/50 hover:border-neutral-700"
+                        ? "border-cyan-500/50 bg-gradient-to-br from-neutral-900 to-neutral-900 shadow-xl shadow-cyan-500/10"
+                        : "border-neutral-800 bg-neutral-900/80 hover:border-neutral-700"
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className={`rounded-lg p-2 ${activeIndex === index ? "bg-gradient-to-br from-cyan-500/20 to-blue-500/20" : "bg-neutral-800/50"}`}>
+                      <div className={`rounded-lg p-2 ${activeIndex === index ? "bg-gradient-to-br from-cyan-500/20 to-cyan-500/20" : "bg-neutral-900/80"}`}>
                         <FaBuilding className={`text-xl ${activeIndex === index ? "text-cyan-400" : "text-neutral-400"}`} />
                       </div>
                       <div>
@@ -116,14 +116,14 @@ const Experience = () => {
                           className={`px-2 py-1 rounded-full text-xs ${
                             activeIndex === index
                               ? "bg-cyan-900/30 text-cyan-300"
-                              : "bg-neutral-800 text-neutral-400"
+                              : "bg-neutral-900 text-neutral-400"
                           }`}
                         >
                           {tech}
                         </span>
                       ))}
                       {exp.technologies.length > 3 && (
-                        <span className="px-2 py-1 rounded-full text-xs bg-neutral-800 text-neutral-400">
+                        <span className="px-2 py-1 rounded-full text-xs bg-neutral-900 text-neutral-400">
                           +{exp.technologies.length - 3}
                         </span>
                       )}
@@ -139,7 +139,7 @@ const Experience = () => {
         <div className="lg:hidden">
           <div className="relative">
             {/* Vertical Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/20 via-blue-500/40 to-purple-500/20"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/20 via-cyan-500/40 to-purple-500/20"></div>
 
             {EXPERIENCES.map((exp, index) => (
               <motion.div
@@ -158,9 +158,9 @@ const Experience = () => {
                 </div>
 
                 {/* Experience Card */}
-                <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 hover:border-cyan-500/30 transition-all duration-300">
+                <div className="rounded-xl border border-neutral-800 bg-neutral-900/80 p-6 hover:border-cyan-500/30 transition-all duration-300">
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-2">
+                    <div className="rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-500/20 p-2">
                       <FaBuilding className="text-xl text-cyan-400" />
                     </div>
                     <div className="flex-1">
@@ -204,9 +204,9 @@ const Experience = () => {
             transition={{ duration: 0.5 }}
             className="hidden lg:block mt-12"
           >
-            <div className="rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-8 shadow-xl">
+            <div className="rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-neutral-900 to-neutral-900 p-8 shadow-xl">
               <div className="flex items-start gap-6 mb-6">
-                <div className="rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-4">
+                <div className="rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/20 p-4">
                   <FaCode className="text-3xl text-cyan-400" />
                 </div>
                 <div className="flex-1">
@@ -261,7 +261,7 @@ const Experience = () => {
               </div>
 
               {EXPERIENCES[activeIndex].highlights && (
-                <div className="rounded-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 p-4">
+                <div className="rounded-lg bg-gradient-to-r from-cyan-500/10 to-cyan-500/10 border border-cyan-500/20 p-4">
                   <p className="text-cyan-300 text-sm">
                     <strong>✨ Highlight:</strong> {EXPERIENCES[activeIndex].highlights}
                   </p>

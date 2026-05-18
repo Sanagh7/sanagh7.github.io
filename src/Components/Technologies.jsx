@@ -32,7 +32,7 @@ import {
 } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion } from "../lib/motion";
 import { FaCode } from "react-icons/fa";
 import { FaRocket, FaCode as FaCodeIcon, FaUserGraduate } from "react-icons/fa";
 
@@ -41,30 +41,30 @@ const techIcons = {
   // Frontend
   React: <RiReactjsLine className="text-cyan-400" />,
   "Next.js": <TbBrandNextjs />,
-  TypeScript: <TbBrandTypescript className="text-blue-500" />,
+  TypeScript: <TbBrandTypescript className="text-cyan-500" />,
   Redux: <SiRedux className="text-purple-500" />,
   "Tailwind CSS": <TbBrandTailwind className="text-cyan-400" />,
-  "SASS/SCSS": <DiSass className="text-pink-500" />,
+  "SASS/SCSS": <DiSass className="text-cyan-500" />,
   Vue: <SiRedux className="text-green-500" />,
   Angular: <SiRedux className="text-red-500" />,
 
   // Backend
   "Node.js": <FaNodeJs className="text-green-500" />,
   Express: <SiExpress />,
-  GraphQL: <SiGraphql className="text-pink-600" />,
+  GraphQL: <SiGraphql className="text-cyan-600" />,
   MongoDB: <SiMongodb className="text-green-500" />,
-  PostgreSQL: <BiLogoPostgresql className="text-sky-700" />,
+  PostgreSQL: <BiLogoPostgresql className="text-cyan-700" />,
   Redis: <DiRedis className="text-red-700" />,
   Prisma: <SiPrisma className="text-teal-400" />,
 
   // DevOps & Tools
   Git: <FaGitAlt className="text-orange-600" />,
   Jest: <SiJest className="text-red-600" />,
-  Docker: <SiDocker className="text-blue-600" />,
+  Docker: <SiDocker className="text-cyan-600" />,
   AWS: <FaAws className="text-orange-400" />,
-  "CI/CD": <SiGithubactions className="text-blue-500" />,
-  Kubernetes: <SiKubernetes className="text-blue-500" />,
-  Azure: <FaServer className="text-blue-600" />,
+  "CI/CD": <SiGithubactions className="text-cyan-500" />,
+  Kubernetes: <SiKubernetes className="text-cyan-500" />,
+  Azure: <FaServer className="text-cyan-600" />,
   Terraform: <SiTerraform className="text-purple-600" />,
   Jenkins: <FaJenkins className="text-red-500" />,
   Linux: <SiLinux className="text-yellow-400" />,
@@ -72,11 +72,11 @@ const techIcons = {
   // Cyber Security
   "Penetration Testing": <FaCodeBranch className="text-red-500" />,
   "Vulnerability Assessment": <FaServer className="text-orange-500" />,
-  "Network Security": <FaServer className="text-blue-400" />,
+  "Network Security": <FaServer className="text-cyan-400" />,
   "OWASP Top 10": <FaCodeBranch className="text-red-400" />,
   "Ethical Hacking": <RiTerminalLine className="text-green-400" />,
   "Burp Suite": <FaServer className="text-orange-600" />,
-  Wireshark: <FaServer className="text-blue-500" />,
+  Wireshark: <FaServer className="text-cyan-500" />,
   Metasploit: <RiTerminalLine className="text-red-500" />,
   "Secure Coding Practices": <FaCodeBranch className="text-cyan-400" />,
   "Security Auditing": <FaServer className="text-purple-400" />,
@@ -85,8 +85,8 @@ const techIcons = {
   Database: <FaDatabase className="text-gray-400" />,
   Bash: <DiTerminal className="text-gray-200" />,
   WebSockets: <FaServer className="text-gray-400" />,
-  Microservices: <FaServer className="text-blue-300" />,
-  REST: <FaServer className="text-blue-300" />,
+  Microservices: <FaServer className="text-cyan-300" />,
+  REST: <FaServer className="text-cyan-300" />,
   Firebase: <SiRedux className="text-yellow-500" />,
 };
 
@@ -112,7 +112,7 @@ const Technologies = () => {
         onMouseLeave={() => setHoveredTech(null)}
       >
         <div
-          className={`relative mb-1 rounded-lg border overflow-hidden bg-neutral-900/70 backdrop-blur-sm p-2 transition-all duration-300 
+          className={`relative mb-1 rounded-lg border overflow-hidden bg-neutral-900/80 backdrop-blur-sm p-2 transition-all duration-300 
           ${
             hoveredTech === tech
               ? "border-cyan-500 shadow-lg shadow-cyan-500/20 scale-105"
@@ -136,7 +136,7 @@ const Technologies = () => {
       {/* Background effect */}
       <div className="absolute left-0 right-0 top-0 h-full w-full overflow-hidden -z-10 bg-[#060921]">
         <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-cyan-900/20 blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-blue-900/20 blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 h-[300px] w-[300px] rounded-full bg-cyan-900/20 blur-3xl"></div>
       </div>
 
       <motion.div
@@ -170,7 +170,7 @@ const Technologies = () => {
               className={`relative overflow-hidden rounded-full px-5 py-1.5 text-sm font-medium transition-all duration-300 ${
                 activeCategory === categoryIndex
                   ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20"
-                  : "bg-neutral-800/80 text-neutral-400 hover:bg-neutral-700 hover:text-white"
+                  : "bg-neutral-900/80 text-neutral-400 hover:bg-cyan-500/10 hover:text-white"
               }`}
               onClick={() => setActiveCategory(categoryIndex)}
             >
@@ -201,15 +201,15 @@ const Technologies = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 backdrop-blur-sm"
+          className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-900/80 p-8 backdrop-blur-sm"
         >
           <h3 className="mb-6 text-center text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
             Learning Journey
           </h3>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/80 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-900/80">
               <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-2">
+                <div className="rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-500/20 p-2">
                   <FaRocket className="text-xl text-cyan-400" />
                 </div>
                 <h4 className="text-lg font-semibold text-white">
@@ -221,9 +221,9 @@ const Technologies = () => {
                 my expertise and stay current with industry trends.
               </p>
             </div>
-            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/80 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-900/80">
               <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-2">
+                <div className="rounded-lg bg-gradient-to-br from-purple-500/20 to-cyan-500/20 p-2">
                   <FaCodeIcon className="text-xl text-purple-400" />
                 </div>
                 <h4 className="text-lg font-semibold text-white">
@@ -235,7 +235,7 @@ const Technologies = () => {
                 libraries, and frameworks to build better solutions.
               </p>
             </div>
-            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-800/50">
+            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/80 p-6 transition-all duration-300 hover:border-cyan-500/50 hover:bg-neutral-900/80">
               <div className="mb-4 flex items-center gap-3">
                 <div className="rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-2">
                   <FaUserGraduate className="text-xl text-green-400" />
