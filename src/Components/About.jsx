@@ -1,53 +1,22 @@
+"use client";
+
 import { motion } from "framer-motion";
 import aboutImg from "../assets/san.jpg";
 import { ABOUT_TEXT } from "../constants";
 import {
   FaDownload,
-  FaUserGraduate,
   FaCode,
-  FaLaptopCode,
-  FaRocket,
   FaEnvelope,
-  FaBriefcase,
   FaServer,
   FaShieldAlt,
-  FaTools
 } from "react-icons/fa";
-
-// Experience cards data
-const experienceCards = [
-  {
-    icon: <FaCode />,
-    title: "Frontend Development",
-    description: "Creating responsive, accessible, and performant user interfaces with modern frameworks and libraries.",
-    color: "from-cyan-500 to-blue-500",
-  },
-  {
-    icon: <FaServer />,
-    title: "Backend Development",
-    description: "Building scalable APIs, database management, and server architecture for robust applications.",
-    color: "from-blue-500 to-purple-500",
-  },
-  {
-    icon: <FaShieldAlt />,
-    title: "Cyber Security",
-    description: "Implementing security best practices, vulnerability assessments, and penetration testing.",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: <FaTools />,
-    title: "DevOps & Tools",
-    description: "Streamlining development workflows using containerization, CI/CD pipelines, and cloud services.",
-    color: "from-pink-500 to-orange-500",
-  },
-];
 
 const About = () => {
   return (
     <div className="relative border-b border-neutral-800/50 pb-24 pt-20 overflow-hidden bg-[#060921]">
       {/* Enhanced background elements */}
-      <div className="absolute -right-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "8s" }}></div>
-      <div className="absolute -left-32 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl animate-pulse" style={{ animationDuration: "10s", animationDelay: "2s" }}></div>
+      <div className="absolute -right-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute -left-32 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -126,8 +95,8 @@ const About = () => {
             </div>
             
             {/* Background glow */}
-            <div className="absolute -bottom-6 -right-6 -z-10 h-48 w-48 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-20 blur-2xl animate-pulse" style={{ animationDuration: "5s" }}></div>
-            <div className="absolute -top-6 -left-6 -z-10 h-40 w-40 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-20 blur-2xl animate-pulse" style={{ animationDuration: "7s", animationDelay: "1s" }}></div>
+            <div className="absolute -bottom-6 -right-6 -z-10 h-48 w-48 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-20 blur-2xl"></div>
+            <div className="absolute -top-6 -left-6 -z-10 h-40 w-40 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-20 blur-2xl"></div>
           </motion.div>
 
           {/* Right Column - Text Content */}

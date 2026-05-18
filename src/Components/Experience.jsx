@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "../constants";
 import {
@@ -15,8 +17,8 @@ const Experience = () => {
   return (
     <div className="relative border-b border-neutral-800/50 py-20 overflow-hidden bg-[#060921]">
       {/* Background decorative elements */}
-      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl animate-pulse" style={{ animationDuration: "10s" }}></div>
-      <div className="absolute -right-32 bottom-1/4 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "12s", animationDelay: "2s" }}></div>
+      <div className="absolute -left-32 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-purple-500/5 to-pink-500/5 blur-3xl"></div>
+      <div className="absolute -right-32 bottom-1/4 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Section Header */}
@@ -72,7 +74,7 @@ const Experience = () => {
                       }`}
                       onClick={() => setActiveIndex(index)}
                     >
-                      <div className={`absolute inset-0 rounded-full ${activeIndex === index ? "animate-ping bg-cyan-500/50" : ""}`}></div>
+                      <div className={`absolute inset-0 rounded-full ${activeIndex === index ? "bg-cyan-500/40" : ""}`}></div>
                     </motion.div>
                   </div>
 
@@ -151,7 +153,7 @@ const Experience = () => {
                 {/* Timeline Dot */}
                 <div className="absolute left-6 top-6">
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-cyan-500/50">
-                    <div className="absolute inset-0 rounded-full animate-ping bg-cyan-500/50"></div>
+                    <div className="absolute inset-0 rounded-full bg-cyan-500/40"></div>
                   </div>
                 </div>
 

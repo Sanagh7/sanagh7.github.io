@@ -1,5 +1,7 @@
+"use client";
+
 // src/components/Contact.js
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { CONTACT } from "../constants";
 import {
@@ -86,8 +88,8 @@ function Contact() {
   return (
     <div className="relative py-24 sm:py-32 overflow-hidden bg-[#060921]">
       {/* Enhanced background elements */}
-      <div className="absolute -left-32 top-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "15s" }}></div>
-      <div className="absolute bottom-1/4 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl animate-pulse" style={{ animationDuration: "12s", animationDelay: "2s" }}></div>
+      <div className="absolute -left-32 top-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-3xl"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

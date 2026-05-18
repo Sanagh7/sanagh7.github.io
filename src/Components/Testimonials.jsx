@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+"use client";
+
+import { useCallback, useRef, useState } from "react";
 import { TESTIMONIALS } from "../constants";
 import { FaQuoteLeft, FaPaw, FaFeather, FaDove } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -8,29 +10,21 @@ const Testimonials = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
     setTimeout(() => setIsAnimating(false), 500);
-  };
+  }, [isAnimating]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex(
       (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
     );
     setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  // Auto-sliding effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 8000);
-    return () => clearInterval(timer);
-  }, [activeIndex, isAnimating]);
+  }, [isAnimating]);
 
   return (
     <div className="relative border-b border-neutral-800/50 py-24 overflow-hidden bg-[#060921]">
@@ -39,30 +33,15 @@ const Testimonials = () => {
       <div className="absolute bottom-1/4 -right-16 -z-10 h-72 w-72 rounded-full bg-purple-900/5 blur-3xl"></div>
 
       {/* Floating animal elements */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute left-10 top-20 text-cyan-500/20"
-      >
+      <div className="absolute left-10 top-20 text-cyan-500/20">
         <FaPaw className="h-8 w-8" />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute right-20 top-40 text-purple-500/20"
-      >
+      </div>
+      <div className="absolute right-20 top-40 text-purple-500/20">
         <FaFeather className="h-6 w-6" />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute left-1/4 bottom-20 text-blue-500/20"
-      >
+      </div>
+      <div className="absolute left-1/4 bottom-20 text-blue-500/20">
         <FaDove className="h-7 w-7" />
-      </motion.div>
+      </div>
 
       <h2 className="mb-16 text-center text-5xl font-light tracking-tight text-white">
         <span className="mr-2 inline-block rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 px-2 py-1 text-3xl font-bold text-white">
@@ -195,7 +174,7 @@ const Testimonials = () => {
                 aria-label={`Go to testimonial ${index + 1}`}
               >
                 {index === activeIndex && (
-                  <span className="absolute inset-0 animate-ping rounded-full bg-cyan-500 opacity-75"></span>
+                  <span className="absolute inset-0 rounded-full bg-cyan-500 opacity-40"></span>
                 )}
               </button>
             ))}

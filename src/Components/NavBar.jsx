@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+"use client";
+
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NavBar = () => {
@@ -8,7 +10,7 @@ const NavBar = () => {
   const mobileMenuRef = useRef(null);
 
   // Navigation items with icons for mobile view
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "education", label: "Education" },
@@ -18,7 +20,7 @@ const NavBar = () => {
     { id: "projects", label: "Projects" },
     { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },
-  ];
+  ], []);
 
   // Handle scroll effect
   useEffect(() => {
@@ -55,7 +57,7 @@ const NavBar = () => {
     setTimeout(handleScroll, 100);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeSection]);
+  }, [activeSection, navItems]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {

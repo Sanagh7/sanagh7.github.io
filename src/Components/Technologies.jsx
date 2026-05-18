@@ -1,3 +1,5 @@
+"use client";
+
 import { SKILLS } from "../constants";
 import { RiReactjsLine, RiTerminalLine } from "react-icons/ri";
 import {
@@ -29,7 +31,7 @@ import {
   FaJenkins,
 } from "react-icons/fa";
 import { BiLogoPostgresql } from "react-icons/bi";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { FaCode } from "react-icons/fa";
 import { FaRocket, FaCode as FaCodeIcon, FaUserGraduate } from "react-icons/fa";

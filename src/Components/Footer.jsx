@@ -2,8 +2,6 @@ import { CONTACT } from "../constants";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
-  FaInstagram,
   FaRegCopyright,
   FaHeart,
 } from "react-icons/fa";
@@ -157,7 +155,7 @@ const Footer = () => {
           {/* Made with love */}
           <div className="mt-6 text-center text-xs text-neutral-600">
             Made with{" "}
-            <FaHeart className="mx-1 inline-block animate-pulse text-red-500" />{" "}
+            <FaHeart className="mx-1 inline-block text-red-500" />{" "}
             and modern web technologies
           </div>
         </div>

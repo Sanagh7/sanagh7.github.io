@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { ACHIEVEMENTS } from "../constants/index.js";
+import { ACHIEVEMENTS } from "../constants";
 import { FaUsers, FaProjectDiagram, FaClock, FaCode } from "react-icons/fa";
 
 const Achievements = () => {

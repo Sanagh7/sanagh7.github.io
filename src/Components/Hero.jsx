@@ -1,19 +1,10 @@
-import { useState, useEffect } from "react";
+"use client";
+
 import { HERO_CONTENT } from "../constants";
-import { FaArrowDown, FaEnvelope, FaCode, FaGithub, FaLinkedin, FaFileAlt, FaServer, FaRocket, FaChartLine } from "react-icons/fa";
+import { FaArrowDown, FaEnvelope, FaCode, FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#060921]">
       {/* SEO enhancement with additional name identifiers */}
@@ -26,8 +17,8 @@ const Hero = () => {
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 -z-10 bg-[#060921]">
         {/* Main gradient orbs */}
-        <div className="absolute left-1/4 top-1/4 h-[400px] sm:h-[600px] w-[400px] sm:w-[600px] rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-3xl animate-pulse"></div>
-        <div className="absolute right-1/4 bottom-1/4 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-3xl animate-pulse" style={{ animationDelay: "2s", animationDuration: "8s" }}></div>
+        <div className="absolute left-1/4 top-1/4 h-[400px] sm:h-[600px] w-[400px] sm:w-[600px] rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-3xl"></div>
         
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e9_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-[0.03]"></div>
@@ -192,13 +183,9 @@ const Hero = () => {
           className="flex flex-col items-center text-neutral-500 hover:text-cyan-400 transition-colors group"
         >
           <span className="mb-2 text-xs font-light uppercase tracking-wider">Explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="p-2.5 rounded-full border-2 border-neutral-700/50 group-hover:border-cyan-500 transition-colors"
-          >
+          <div className="p-2.5 rounded-full border-2 border-neutral-700/50 group-hover:border-cyan-500 transition-colors">
             <FaArrowDown className="text-base" />
-          </motion.div>
+          </div>
         </a>
       </motion.div>
     </div>

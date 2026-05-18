@@ -204,6 +204,15 @@ export const TESTIMONIALS = [
   // },
 ];
 
+export const ACHIEVEMENTS = {
+  stats: [
+    { label: "Projects Completed", value: "25+" },
+    { label: "Happy Clients", value: "15+" },
+    { label: "Years Experience", value: "3+" },
+    { label: "Technologies", value: "20+" },
+  ],
+};
+
 export const HERO_CONTENT = {
   mainHeading: "Backend Engineer | AI & R&D Enthusiast",
   subheading: "Building scalable backend systems and intelligent, data-driven applications",

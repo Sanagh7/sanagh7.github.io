@@ -1,5 +1,7 @@
+"use client";
+
 // src/components/Projects.js
-import React, { useState } from "react";
+import { useState } from "react";
 import { PROJECTS } from "../constants";
 import { FaGithub, FaExternalLinkAlt, FaBriefcase, FaGraduationCap, FaLightbulb } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
